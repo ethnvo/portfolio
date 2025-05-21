@@ -16,6 +16,9 @@ const Navbar = () => {
                         <a href ="#about">About</a>
                     </li>
                     <li className='opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-300'>
+                        <a href ="#timeline">Timeline</a>
+                    </li>
+                    <li className='opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-300'>
                         <a href ="#projects">Projects</a>
                     </li>
                     <li className='opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-300'>
