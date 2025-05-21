@@ -51,7 +51,12 @@ const About = () => {
                         </a>
                     </div>
                 </motion.div>
-                <img src=''></img>
+
+                <img 
+                    src='profileimg2.jpg' 
+                    className='w-[300px] md:w-[400px] rounded-full hover:shadow-2xl hover:shadow-pink-500 hover:scale-105 hover:rotate-2 transition-all duration-500' 
+                    alt='Profile Picture of Ethan Vo' 
+                />
         </motion.div>
     </div>
   )
