@@ -12,44 +12,37 @@ const Timeline = () => {
             whileInView={{ opacity: 1, y: -70 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-col-reverse items-center justify-center md:flex md:flex-row gap-8 md:gap-16 lg:gap-24"
+            className="w-full"
           >
-            <div>
-              {/* entire container*/}
+            <div
+              className={`flex items-center gap-4 group transition-all ${
+                index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+              }`}
+            >
+              {/* text section */}
               <div
-                className={`flex items-center gap-4 ${
-                  index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+                className={`flex-1 flex flex-col gap-1 group-hover:scale-[1.025] transition-transform duration-300 ease-in-out ${
+                  index % 2 === 0 ? "text-right" : "text-left"
                 }`}
               >
-                <div
-                  className={`flex-1 flex flex-col gap-1 ${
-                    index % 2 === 0 ? "text-right" : "text-left"
-                  }`}
-                >
-                  {/*all of the text*/}
-                  <div
-                    className={`flex ${
-                      index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-                    }`}
-                    key={entry.title}
-                  >
-                    <div className="text-pretty hover:scale-105 transition-all transition-smooth">
-                      <h2 className="font-bold"> {entry.title}</h2>
-                      <h3 className="font-semibold"> {entry.location}</h3>
-                      <p className="italic"> {entry.date}</p>
-                      <p className="text-sm"> {entry.description}</p>
-                    </div>
-                  </div>
+                <div key={entry.title}>
+                  <h2 className="font-bold">{entry.title}</h2>
+                  <h3 className="font-medium">{entry.location}</h3>
+                  <p className="italic">{entry.date}</p>
+                  <p className="text-sm">{entry.description}</p>
                 </div>
-                <div>
-                  {/* logos */}
-                  <img
-                    className="w-[50px] h-[50px] rounded-md object-contain hover:scale-125 transition-all transiiton-smooth ease-in-out bg-clip-text"
-                    src={entry.logo}
-                  ></img>
-                </div>
-                <div className="flex-1"> </div>
               </div>
+
+              {/* logo */}
+              <div className="transition-transform duration-300 ease-in-out group-hover:scale-[1.2]">
+                <img
+                  src={entry.logo}
+                  alt=""
+                  className="w-[50px] h-[50px] rounded-md object-contain"
+                />
+              </div>
+
+              <div className="flex-1"></div>
             </div>
           </motion.div>
         ))}
