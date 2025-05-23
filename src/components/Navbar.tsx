@@ -39,6 +39,11 @@ const Navbar = () => {
                 <span className="text-lg"> About </span>
               </a>
             </li>
+            <li className="group px-10 opacity-80 hover:opacity-100 transition-opacity">
+              <a href="#timeline" onClick={() => setIsMenuOpen(false)}>
+                <span className="text-lg"> Timeline </span>
+              </a>
+            </li>
 
             <li className="group px-10 opacity-80 hover:opacity-100 transition-opacity">
               <a href="#projects" onClick={() => setIsMenuOpen(false)}>
