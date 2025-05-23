@@ -15,7 +15,7 @@ const Timeline = () => {
             className="w-full"
           >
             <div
-              className={`flex border rounded-lg items-center gap-4 group transition-all ${
+              className={`flex border border-gray-500 rounded-lg items-center gap-4 group transition-all ${
                 index % 2 === 0 ? "flex-row" : "flex-row-reverse"
               }`}
             >
