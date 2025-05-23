@@ -35,6 +35,7 @@ const Timeline = () => {
                   >
                     <div className="text-pretty hover:scale-105 transition-all transition-smooth">
                       <h2 className="font-bold"> {entry.title}</h2>
+                      <h3 className="font-semibold"> {entry.location}</h3>
                       <p className="italic"> {entry.date}</p>
                       <p className="text-sm"> {entry.description}</p>
                     </div>
@@ -43,7 +44,7 @@ const Timeline = () => {
                 <div>
                   {/* logos */}
                   <img
-                    className="w-[50px] h-[50px] rounded-md object-contain hover:scale-125 transition-all transiiton-smooth bg-clip-text"
+                    className="w-[50px] h-[50px] rounded-md object-contain hover:scale-125 transition-all transiiton-smooth ease-in-out bg-clip-text"
                     src={entry.logo}
                   ></img>
                 </div>

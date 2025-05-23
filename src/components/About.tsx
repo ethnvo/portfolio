@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { BiLogoGithub, BiLogoInstagram, BiLogoLinkedin } from "react-icons/bi";
+
 const About = () => {
   return (
     <div
@@ -48,14 +49,14 @@ const About = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <BiLogoGithub className="text-2xl md:text-3xl text-white cursor-pointer hover:scale-110 hover:text-rose-800 hover:rotate-12 transition-all duration-300 ease-in-out "></BiLogoGithub>
+              <BiLogoGithub className="scale-125 text-2xl md:text-3xl text-white cursor-pointer transition-all duration-300 ease-in-out hover:scale-150 hover:text-[#6e7681] hover:rotate-6" />
             </a>
             <a
               href="https://www.linkedin.com/in/ethnvo/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <BiLogoLinkedin className="text-2xl md:text-3xl text-white cursor-pointer hover:scale-110 hover:text-rose-800 hover:rotate-12 transition-all duration-300 ease-in-out "></BiLogoLinkedin>
+              <BiLogoLinkedin className="text-2xl md:text-3xl scale-125 text-white cursor-pointer transition-all duration-300 ease-in-out hover:scale-150 hover:text-[#0A66C2] hover:rotate-6" />
             </a>
 
             <a
@@ -63,15 +64,27 @@ const About = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <BiLogoInstagram className="text-2xl md:text-3xl text-white cursor-pointer hover:scale-110 hover:text-rose-800 hover:rotate-12 transition-all duration-300 ease-in-out "></BiLogoInstagram>
+              <BiLogoInstagram className="text-2xl md:text-3xl scale-125 text-white cursor-pointer transition-all duration-300 ease-in-out hover:scale-150 hover:text-pink-500 hover:rotate-6" />
             </a>
-            <a
-              href="resume.pdf"
-              download
-              className="px-4 py-2 bg-pink-500 text-white rounded-lg font-medium hover:bg-pink-600 transition"
-            >
-              Download CV
-            </a>
+
+            <div className="flex items-center gap-4">
+              <a
+                href="/resume.pdf"
+                download
+                className="inline-block bg-gradient-to-r from-pink-500 via-amber-500 to-pink-500 bg-[length:400%_400%] bg-[position:0%_50%] hover:animate-gradient-x p-[2px] rounded-lg transition-all"
+              >
+                <div className="backdrop-blur-md text-white drop-shadow-md px-4 py-2 rounded-lg text-md leading-none font-medium">
+                  Download CV
+                </div>
+              </a>
+
+              <a
+                href="#contact"
+                className="px-4 py-2 border border-pink-500 text-pink-500 rounded-lg hover:bg-pink-600 hover:text-white transition-all text-md leading-none font-medium"
+              >
+                Contact Me
+              </a>
+            </div>
           </div>
         </motion.div>
 

@@ -1,6 +1,7 @@
 export type TimelineEntry = {
-    title:string,
-    date:string,
-    description:string,
-    logo:string,
-}
+  title: string;
+  location: string;
+  date: string;
+  description: string;
+  logo: string;
+};
