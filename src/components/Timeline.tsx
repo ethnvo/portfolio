@@ -33,7 +33,14 @@ const Timeline = () => {
           />
 
           {/* content */}
-          <h2 className="text-xl font-bold text-rose-600">{entry.title}</h2>
+          <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-b to-pink-600 via-pink-400 from-rose-400">
+            {entry.title}
+          </h2>
+          {entry.extra && (
+            <span className="inline-block px-3 py-1 bg-gray-200 rounded-full text-sm">
+              {entry.extra}
+            </span>
+          )}
           <span className="inline-block px-3 py-1 bg-gray-200 rounded-full text-sm">
             {entry.date}
           </span>

@@ -6,7 +6,7 @@ export const timelineData = [
     date: "May 2025",
     description:
       "Earned 1st Place for building a socially impactful platform promoting women-led academia. Recognized by UCI’s Department of Computer Science for addressing gender bias through verified research metadata.",
-    logo: "/logos/autherbookdark.svg",
+    logo: "/logos/auther500.png",
   },
   {
     title: "Backend Developer & System Architect @ AWSpeak",
@@ -28,6 +28,7 @@ export const timelineData = [
   },
   {
     title: "Embedded Software Engineer",
+    extra: "",
     location: "BitHacks",
     date: "April 2025",
     description:
@@ -36,6 +37,7 @@ export const timelineData = [
   },
   {
     title: "Software Engineering Fellow",
+    extra: "",
     location: "Headstarter AI - Remote",
     date: "June 2024 – September 2024",
     description:
