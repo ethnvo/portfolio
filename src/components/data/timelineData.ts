@@ -1,7 +1,7 @@
 export const timelineData = [
   {
     title: "Fullstack Developer & System Architect @ auther.",
-    extra: "Winner - Best Female Empowerment",
+    extra: "1st Place 🏆 - Best Female Empowerment",
     location: "VenusHacks",
     date: "May 2025",
     description:
