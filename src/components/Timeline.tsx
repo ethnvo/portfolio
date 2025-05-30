@@ -14,7 +14,7 @@ const Timeline = () => {
   return (
     <div className="relative max-w-6xl mx-auto my-16 px-4 sm:px-6 lg:px-8">
       {/* central line */}
-      <div className="absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-amber-500 via-pink-500 to-pink-500 transform -translate-x-1/2" />
+      <div className="absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-[#eab308] via-rose-400 to-pink-500 transform -translate-x-1/2" />
 
       {timelineData.map((entry, i) => (
         <motion.div
