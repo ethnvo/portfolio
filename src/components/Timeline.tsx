@@ -1,4 +1,3 @@
-import React from "react";
 import { timelineData } from "./data/timelineData";
 import { motion } from "framer-motion";
 
@@ -24,7 +23,6 @@ const Timeline = () => {
           key={i}
           initial="hidden"
           whileInView="visible"
-          whileHover={{ scale: 1.1 }}
           viewport={{ once: true }}
           variants={{
             hidden: { opacity: 0, y: 50 },
@@ -49,32 +47,36 @@ const Timeline = () => {
               ${i % 2 === 0 ? "-left-6 sm:-left-7" : "-right-6 sm:-right-7"}
             `}
           />
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring" }}
+          >
+            {/* content */}
+            <h2 className="truncate text-lg sm:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-yellow-100">
+              {entry.title}
+            </h2>
 
-          {/* content */}
-          <h2 className="truncate text-lg sm:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-yellow-100">
-            {entry.title}
-          </h2>
-
-          {/* badges */}
-          <div
-            className={`
+            {/* badges */}
+            <div
+              className={`
     mt-2 w-full flex flex-wrap gap-2 items-center
     ${i % 2 != 0 ? "justify-end" : "justify-start"}
   `}
-          >
-            {entry.extra && (
-              <span className="px-3 py-1 border border-yellow-400 rounded-full text-xs sm:text-sm text-white">
-                {entry.extra}
+            >
+              {entry.extra && (
+                <span className="px-3 py-1 border border-yellow-400 rounded-full text-xs sm:text-sm text-white">
+                  {entry.extra}
+                </span>
+              )}
+              <span className="px-3 py-1 bg-gray-400/20 rounded-full text-xs sm:text-sm text-white">
+                {entry.date}
               </span>
-            )}
-            <span className="px-3 py-1 bg-gray-400/20 rounded-full text-xs sm:text-sm text-white">
-              {entry.date}
-            </span>
-          </div>
+            </div>
 
-          <p className="mt-3 text-sm sm:text-base text-white">
-            {entry.description}
-          </p>
+            <p className="mt-3 text-sm sm:text-base text-white">
+              {entry.description}
+            </p>
+          </motion.div>
         </motion.div>
       ))}
     </div>
