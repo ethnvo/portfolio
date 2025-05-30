@@ -24,6 +24,7 @@ const Timeline = () => {
           key={i}
           initial="hidden"
           whileInView="visible"
+          whileHover={{ scale: 1.1 }}
           viewport={{ once: true }}
           variants={{
             hidden: { opacity: 0, y: 50 },
@@ -33,7 +34,7 @@ const Timeline = () => {
               transition: { delay: i * 0.2 },
             },
           }}
-          className={`relative w-full sm:w-4/5 md:w-1/2 p-6 sm:p-8 bg-black/20 rounded-2xl shadow-lg
+          className={`relative w-full sm:w-4/5 md:w-1/2 p-6 sm:p-8 bg-black/20 rounded-2xl shadow-lg 
   ${i % 2 === 0 ? "ml-auto text-left" : "mr-auto text-right"}
   overflow-visible flex flex-col
 `}
