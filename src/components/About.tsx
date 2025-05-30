@@ -33,11 +33,11 @@ const About = () => {
             Fullstack Engineer
           </h3>
           <p className="text-sm text-slate-400  text-center md:text-left text-pretty">
-I’m Ethan Vo, a second-year Business Info Management and Software Engineering major at UC Irvine. I thrive in high-pressure environments like hackathons and team projects, and I’m focused on growing as a software engineer with an interest in product and user-centered design.
-
-
-
-
+            I’m Ethan Vo, a second-year Business Info Management and Software
+            Engineering major at UC Irvine. I thrive in high-pressure
+            environments like hackathons and team projects, and I’m focused on
+            growing as a software engineer with an interest in product and
+            user-centered design.
           </p>
           <div className="flex  gap-5 mt-3">
             <a
@@ -75,7 +75,7 @@ I’m Ethan Vo, a second-year Business Info Management and Software Engineering 
               </a>
 
               <a
-                href="#contact"
+                href="mailto:ekvo@uci.edu"
                 className="px-4 py-2 border border-pink-500 text-pink-500 rounded-lg hover:bg-pink-600 hover:text-white transition-all text-md leading-none font-medium"
               >
                 Contact Me
