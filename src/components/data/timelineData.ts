@@ -1,4 +1,13 @@
-export const timelineData = [
+export type timeline = {
+  title: string;
+  extra: string | null;
+  location: string;
+  date: string;
+  description: string;
+  logo: string;
+};
+
+export const timelineData: timeline[] = [
   {
     title: "Fullstack Developer & System Architect @ auther.",
     extra: "1st Place 🏆 - Best Female Empowerment",
