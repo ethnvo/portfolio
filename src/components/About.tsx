@@ -33,15 +33,11 @@ const About = () => {
             Fullstack Engineer
           </h3>
           <p className="text-sm text-slate-400  text-center md:text-left text-pretty">
-            I’m Ethan Vo, a second-year Double Major in Business Information
-            Management and Software Engineering at UC Irvine, passionate about
-            building impactful technology that bridges business and engineering.
-            I’m driven, competitive, and thrive in high-pressure environments,
-            whether it’s leading development teams or competing in hackathons to
-            win. Currently, I’m focused on sharpening my technical skills as a
-            software engineer, with the long-term goal of transitioning into
-            product management to lead teams in building innovative, user-driven
-            solutions.
+I’m Ethan Vo, a second-year Business Info Management and Software Engineering major at UC Irvine. I thrive in high-pressure environments like hackathons and team projects, and I’m focused on growing as a software engineer with an interest in product and user-centered design.
+
+
+
+
           </p>
           <div className="flex  gap-5 mt-3">
             <a
