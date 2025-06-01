@@ -12,7 +12,7 @@ const borderColors = [
 const Timeline = () => {
   return (
     <div
-      className="relative max-w-6xl mx-auto my-16 px-4 sm:px-6 lg:px-8"
+      className="relative max-w-6xl mx-auto mt-8 mb-64 px-4 sm:px-6 lg:px-8"
       id="timeline"
     >
       {/* central line */}

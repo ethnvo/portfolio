@@ -1,30 +1,45 @@
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useAnimationFrame } from "framer-motion";
+import { useRef, useState } from "react";
 import { projects } from "./data/projectData";
 
-const CARD_WIDTH = 500; // width of one card
-const GAP = 32; // gap between cards
+const CARD_WIDTH = 500;
+const GAP = 32;
 const ITEM_WIDTH = CARD_WIDTH + GAP;
 const VISIBLE_CARDS = projects.length;
 const TOTAL_WIDTH = ITEM_WIDTH * VISIBLE_CARDS;
+const SPEED = 150; // pixels per second (adjust to taste)
 
 const Projects = () => {
-  // duplicate so after scrolling TOTAL_WIDTH we land exactly at the start again
+  const x = useMotionValue(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [paused, setPaused] = useState(false);
+
+  // Duplicate so that after scrolling TOTAL_WIDTH we land exactly at the start again
   const looped = [...projects, ...projects];
 
+  // On each frame, move the x position unless paused
+  useAnimationFrame((_, delta) => {
+    if (!paused) {
+      const currentX = x.get();
+      const nextX = currentX - (SPEED * delta) / 1000;
+      // wrap around when we've scrolled past -TOTAL_WIDTH
+      x.set(nextX <= -TOTAL_WIDTH ? 0 : nextX);
+    }
+  });
+
   return (
-    <div className="w-[1000px] overflow-hidden mx-auto py-8" id="projects">
+    <div
+      className="w-[1000px] overflow-hidden mx-auto py-8 mt-[64px]"
+      id="projects"
+    >
+      <div className="text-white  text-2xl mb-10"> Featured Projects</div>
+
       <motion.div
         className="flex gap-6"
-        // animate x from 0 to -TOTAL_WIDTH, then snap back to 0
-        animate={{ x: [0, -TOTAL_WIDTH] }}
-        transition={{
-          x: {
-            repeat: 25, // loop forever
-            repeatType: "loop", // jump back to 0 instantly
-            duration: 30, // total time for one full pass (adjust to taste)
-            ease: "linear", // constant speed
-          },
-        }}
+        style={{ x }}
+        ref={containerRef}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
       >
         {looped.map((project, i) => (
           <a href={looped[i].link} target="_blank" rel="noopener noreferer">
@@ -35,11 +50,11 @@ const Projects = () => {
               <h3 className="text-xl font-bold text-white mb-4 ">
                 {project.title}
               </h3>
-              <div className="inline-flex items-center justify-center bg-white/5 rounded-xl p-4 mb-4">
+              <div className="inline-flex items-center justify-center bg-white/5 rounded-2xl p-1 mb-4">
                 <img
                   src={project.logo}
                   alt={project.title}
-                  className="max-w-full h-[250px] object-contain"
+                  className="max-w-full h-[250px] object-contain rounded-3xl"
                 />
               </div>
               <div className="h-[75px]">
