@@ -2,17 +2,19 @@ import {
   BiLogoReact,
   BiLogoTypescript,
   BiLogoDjango,
-  BiLogoJavascript,
   BiLogoFlask,
   BiLogoAws,
   BiLogoPython,
   BiLogoTailwindCss,
+  BiLogoFlutter,
+  BiLogoFirebase,
 } from "react-icons/bi";
 import { IconType } from "react-icons";
 
 export type Project = {
   title: string;
   logo: string;
+  link: string;
   description: string;
   technologies?: string[]; // optional for now
   techlogos?: (IconType | null)[]; // optional too
@@ -22,7 +24,7 @@ export const projects: Project[] = [
   {
     title: "auther.",
     logo: "/logos/auther500.png",
-
+    link: "",
     technologies: [
       "React",
       "Next.js",
@@ -39,12 +41,13 @@ export const projects: Project[] = [
       BiLogoPython,
       BiLogoTailwindCss,
     ],
-    description: "test1",
+    description:
+      "Putting women-led research front and center, auther. aims to provide users access to verified female authors through an intuitive platform that amplifies voices that are often overlooked.",
   },
   {
-    title: "AWSpeak.",
+    title: "AWSpeak",
     logo: "/logos/awspeak.jpeg",
-
+    link: "",
     technologies: [
       "React",
       "Next.js",
@@ -63,6 +66,16 @@ export const projects: Project[] = [
       BiLogoPython,
       BiLogoTailwindCss,
     ],
-    description: "test1",
+    description:
+      "AWSpeak is a web application that delivers hyper-realistic mock interviews using advanced AI models, tailored to reflect Amazon’s leadership principles. Users experience voice-driven, dynamic interviews where they respond to behavioral questions based on a specific job description. After the session, they receive detailed, AI-generated feedback that highlights strengths, weaknesses, and actionable tips - complete with a downloadable transcript.",
+  },
+  {
+    title: "Plus1",
+    logo: "/logos/plus1.svg",
+    link: "",
+    technologies: ["Flutter", "Dart", "Google Firebase"],
+    techlogos: [BiLogoFlutter, null, BiLogoFirebase],
+    description:
+      "Plus1 lets students casually find or create real-time meetups like study sessions or lunch hangouts. Designed for low-commitment, instant connection with minimal UI friction. We focused on speed, simplicity, and real-time updates - making social planning feel natural, not overwhelming.",
   },
 ];

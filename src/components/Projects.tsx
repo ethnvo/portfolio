@@ -12,7 +12,7 @@ const Projects = () => {
   const looped = [...projects, ...projects];
 
   return (
-    <div className="w-[600px] overflow-hidden mx-auto py-8">
+    <div className="w-[1000px] overflow-hidden mx-auto py-8">
       <motion.div
         className="flex gap-6"
         // animate x from 0 to -TOTAL_WIDTH, then snap back to 0
@@ -27,22 +27,41 @@ const Projects = () => {
         }}
       >
         {looped.map((project, i) => (
-          <div
-            key={i}
-            className="w-[500px] h-[600px] bg-black/20 p-6 rounded-2xl shadow-md flex flex-col items-center"
-          >
-            <h3 className="text-xl font-bold text-white mb-4">
-              {project.title}
-            </h3>
-            <div className="w-[500px] h-[200px] flex justify-center items-center bg-white/5 rounded-xl mb-4">
-              <img
-                src={project.logo}
-                alt={project.title}
-                className="max-w-full max-h-full  object-contain"
-              />
+          <a>
+            <div
+              key={i}
+              className="w-[700px] h-[600px] bg-black/20 p-6 rounded-2xl shadow-md flex flex-col items-center"
+            >
+              <h3 className="text-xl font-bold text-white mb-4 ">
+                {project.title}
+              </h3>
+              <div className="inline-flex items-center justify-center bg-white/5 rounded-xl p-4 mb-4">
+                <img
+                  src={project.logo}
+                  alt={project.title}
+                  className="max-w-full h-[250px] object-contain"
+                />
+              </div>
+              <div className="h-[75px]">
+                <span className="flex flex-wrap gap-2.5  items-center">
+                  {project.technologies?.map((label, index) => {
+                    const Icon = project.techlogos?.[index] ?? null;
+                    return (
+                      <span
+                        key={index}
+                        className="flex items-center gap-2 text-white bg-white/20 px-3 py-1 rounded-full text-sm"
+                      >
+                        {Icon && <Icon size={18} />}
+                        <span>{label}</span>
+                      </span>
+                    );
+                  })}
+                </span>
+              </div>
+
+              <p className="text-white mt-8 text-sm">{project.description}</p>
             </div>
-            <p className="text-white text-sm">{project.description}</p>
-          </div>
+          </a>
         ))}
       </motion.div>
     </div>

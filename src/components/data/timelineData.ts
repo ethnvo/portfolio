@@ -33,7 +33,7 @@ export const timelineData: timeline[] = [
     date: "April 2025",
     description:
       "Created a spontaneous event planning app for students using Flutter and Firebase. Designed cross-platform mobile UI, integrated Firebase Auth, and led project vision.",
-    logo: "/logos/plus1.png",
+    logo: "/logos/plus1.svg",
   },
   {
     title: "Embedded Software Engineer",

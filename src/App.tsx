@@ -15,6 +15,7 @@ function App() {
       {/* 
       <Projects />
       <Contact /> */}
+      <div className="h-[200px]" /> // Tailwind
     </div>
   );
 }
