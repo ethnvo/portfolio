@@ -12,14 +12,14 @@ const Projects = () => {
   const looped = [...projects, ...projects];
 
   return (
-    <div className="w-[1000px] overflow-hidden mx-auto py-8">
+    <div className="w-[1000px] overflow-hidden mx-auto py-8" id="projects">
       <motion.div
         className="flex gap-6"
         // animate x from 0 to -TOTAL_WIDTH, then snap back to 0
         animate={{ x: [0, -TOTAL_WIDTH] }}
         transition={{
           x: {
-            repeat: Infinity, // loop forever
+            repeat: 25, // loop forever
             repeatType: "loop", // jump back to 0 instantly
             duration: 30, // total time for one full pass (adjust to taste)
             ease: "linear", // constant speed
@@ -27,7 +27,7 @@ const Projects = () => {
         }}
       >
         {looped.map((project, i) => (
-          <a>
+          <a href={looped[i].link} target="_blank" rel="noopener noreferer">
             <div
               key={i}
               className="w-[700px] h-[600px] bg-black/20 p-6 rounded-2xl shadow-md flex flex-col items-center"

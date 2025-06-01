@@ -24,7 +24,7 @@ export const projects: Project[] = [
   {
     title: "auther.",
     logo: "/logos/auther500.png",
-    link: "",
+    link: "https://devpost.com/software/auther",
     technologies: [
       "React",
       "Next.js",
@@ -47,7 +47,7 @@ export const projects: Project[] = [
   {
     title: "AWSpeak",
     logo: "/logos/awspeak.jpeg",
-    link: "",
+    link: "https://devpost.com/software/awspeak",
     technologies: [
       "React",
       "Next.js",
@@ -72,7 +72,7 @@ export const projects: Project[] = [
   {
     title: "Plus1",
     logo: "/logos/plus1.svg",
-    link: "",
+    link: "https://devpost.com/software/plus1-ypledt",
     technologies: ["Flutter", "Dart", "Google Firebase"],
     techlogos: [BiLogoFlutter, null, BiLogoFirebase],
     description:
