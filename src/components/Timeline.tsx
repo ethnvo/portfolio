@@ -43,6 +43,7 @@ const Timeline = () => {
           mt-10
           mb-20
           sm:mb-[100px]
+          sm:font-medium
         "
         >
           Timeline
@@ -140,25 +141,20 @@ const Timeline = () => {
                 src={entry.logo}
                 alt=""
                 className={`
-                  absolute
-                  -top-12
-                  h-12
-                  w-12
-                  sm:h-14
-                  sm:w-14
-                  rounded-md
-                  border
-                  ${borderColors[i % borderColors.length]}
+    absolute
+    -top-12
+    h-12 w-12 sm:h-14 sm:w-14
+    rounded-md
+    border ${borderColors[i % borderColors.length]}
 
-                  /* By default (mobile & small tablet), keep icon centered */
-                  left-1/2
-                  -translate-x-1/2
+    /* Mobile & small tablet: center */
+    left-1/2
+    -translate-x-1/2
 
-                  /* At md (≥768px), undo translation and push icon out to edge */
-                  md:left-auto
-                  md:translate-x-0
-                  ${i % 2 === 0 ? "md:-left-[25px]" : "md:-right-7"}
-                `}
+    /* At ≥768px: cancel the translate, then offset left or right */
+    md:translate-x-0
+    ${i % 2 === 0 ? "md:-left-[25px]" : "md:left-auto md:-right-7"}
+  `}
               />
 
               <a href="#projects">
@@ -171,13 +167,14 @@ const Timeline = () => {
                       truncate
                       text-lg
                       sm:text-xl
-                      font-bold
+                      font-light
                       text-transparent
                       bg-clip-text
                       bg-gradient-to-b
                       from-rose-400
                       via-pink-300
                       to-orange-300
+
                     "
                   >
                     {entry.title}
