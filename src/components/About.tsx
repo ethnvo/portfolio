@@ -23,7 +23,7 @@ const About = () => {
         transition={{ duration: 0.8, delay: 0.2 }}
         className="
           w-full
-          flex
+          
           flex-col
           items-center
           gap-8
@@ -44,8 +44,8 @@ const About = () => {
             className="
               w-48
               h-48
-              md:w-80        /* larger on md+ */
-              md:h-80
+              md:w-[360px]        /* larger on md+ */
+              md:h-[360px]
               rounded-full  /* keep as a circle */
               object-cover
               hover:shadow-2xl

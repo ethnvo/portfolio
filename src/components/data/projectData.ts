@@ -98,7 +98,7 @@ export const projects: Project[] = [
       BiLogoTailwindCss,
     ],
     description:
-      "AWSpeak is a web application that delivers hyper-realistic mock interviews using advanced AI models, tailored to reflect Amazon’s leadership principles. Users experience voice-driven, dynamic interviews where they respond to behavioral questions based on a specific job description. After the session, they receive detailed, AI-generated feedback that highlights strengths, weaknesses, and actionable tips - complete with a downloadable transcript.",
+      "AWSpeak provides hyper-realistic, AI-powered mock interviews simulating Amazon's leadership principles. Users get voice-driven sessions tailored to specific job descriptions, followed by detailed feedback and downloadable transcripts.",
   },
   {
     title: "Plus1",
