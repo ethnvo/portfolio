@@ -15,15 +15,20 @@ const Projects = () => {
   const [paused, setPaused] = useState(false);
 
   // Duplicate so that after scrolling TOTAL_WIDTH we land exactly at the start again
-  const looped = [...projects, ...projects];
+  const looped = [...projects, ...projects, ...projects]; // 3x
 
   // On each frame, move the x position unless paused
   useAnimationFrame((_, delta) => {
     if (!paused) {
       const currentX = x.get();
       const nextX = currentX - (SPEED * delta) / 1000;
-      // wrap around when we've scrolled past -TOTAL_WIDTH
-      x.set(nextX <= -TOTAL_WIDTH ? 0 : nextX);
+
+      if (nextX <= -TOTAL_WIDTH * 2) {
+        // Reset to middle copy (seamless illusion)
+        x.set(-TOTAL_WIDTH);
+      } else {
+        x.set(nextX);
+      }
     }
   });
 
@@ -67,12 +72,18 @@ const Projects = () => {
                 <span className="flex flex-wrap gap-2.5  items-center">
                   {project.technologies?.map((label, index) => {
                     const Icon = project.techlogos?.[index] ?? null;
+                    const badgeColor =
+                      project.colors?.[index % project.colors.length] ??
+                      "#ffffff50"; // fallback
                     return (
                       <span
                         key={index}
-                        className="flex items-center gap-2 text-white bg-white/20 px-3 py-1 rounded-full text-sm"
+                        className="flex items-center gap-2 border text-white px-3 py-1 rounded-full text-sm"
+                        style={{ borderColor: badgeColor }}
                       >
-                        {Icon && <Icon size={18} />}
+                        {Icon && (
+                          <Icon size={18} style={{ color: badgeColor }} />
+                        )}
                         <span>{label}</span>
                       </span>
                     );
