@@ -2,8 +2,8 @@ import { timelineData } from "./data/timelineData";
 import { motion } from "framer-motion";
 
 const borderColors = [
-  "border-yellow-400",
-  "border-amber-500",
+  "border-orange-200",
+  "border-[#CA906C]",
   "border-amber-600",
   "border-rose-400",
   "border-pink-500",
@@ -16,7 +16,7 @@ const Timeline = () => {
       id="timeline"
     >
       {/*  Heading with reduced margins */}
-      <h2 className="text-transparent bg-gradient-to-b bg-clip-text from-rose-500 via-pink-300 to-amber-200  text-wrap text-4xl text-center mt-10 mb-[192px]">
+      <h2 className="text-transparent bg-gradient-to-b bg-clip-text from-rose-500 via-pink-300 to-orange-200  text-wrap text-5xl text-center mt-10 mb-[192px]">
         Timeline
       </h2>
 
@@ -29,7 +29,7 @@ const Timeline = () => {
             top-[0px]    
             bottom-[-50px]  
             w-1
-            bg-gradient-to-b from-[#eab308] via-rose-400 to-pink-500
+            bg-gradient-to-b from-orange-200 via-rose-400 to-pink-500
             transform -translate-x-1/2
           "
         />
@@ -71,13 +71,13 @@ const Timeline = () => {
               <a href="#projects">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring" }}
+                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 >
                   <h2
                     className="
                       truncate text-lg sm:text-xl font-bold
                       text-transparent bg-clip-text
-                      bg-gradient-to-b to-pink-300 via-pink-400 from-rose-500
+                      bg-gradient-to-b from-rose-400 via-pink-300 to-orange-300
                     "
                   >
                     {entry.title}

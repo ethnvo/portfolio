@@ -24,7 +24,7 @@ const About = () => {
           <span className="px-2 py-1 text-white bg-zinc-800 rounded-full text-xs md:text-s">
             Open to Work
           </span>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-center md:text-left bg-gradient-to-b to-pink-300 via-pink-400 from-rose-500 text-transparent bg-clip-text">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-center md:text-left bg-gradient-to-b from-rose-500 via-pink-300 to-orange-200 text-transparent bg-clip-text">
             Ethan Vo
           </h1>
 
@@ -66,7 +66,7 @@ const About = () => {
               <a
                 href="/resume.pdf"
                 download
-                className="inline-block bg-gradient-to-r from-pink-500 via-amber-500 to-pink-500 bg-[length:400%_400%] bg-[position:0%_50%] hover:animate-gradient-x p-[2px] rounded-lg transition-all"
+                className="inline-block bg-gradient-to-tr from-orange-300 via-rose-500 to-orange-300 bg-[length:400%_400%] bg-[position:0%_50%] hover:animate-gradient-x p-[2px] rounded-lg transition-all"
               >
                 <div className="backdrop-blur-md text-white drop-shadow-md px-4 py-2 rounded-lg text-md leading-none font-medium">
                   Download CV

@@ -9,7 +9,7 @@ const Navbar = () => {
       <nav className="max-w-7xl mx-auto px-5 py-6 lg:px-32 flex items-center justify-between text-white">
         <a
           href="#about"
-          className="text-xl md:text-2xl font-semibold bg-gradient-to-r from-rose-500 via-pink-400 to-pink-300 text-transparent bg-clip-text hover:scale-110 transition-all duration-300"
+          className="text-xl md:text-2xl font-semibold bg-gradient-to-r  from-rose-500 via-pink-400 to-orange-200 text-transparent bg-clip-text hover:scale-110 transition-all duration-300"
         >
           Ethan Vo
         </a>

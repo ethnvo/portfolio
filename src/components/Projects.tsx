@@ -38,7 +38,7 @@ const Projects = () => {
       id="projects"
     >
       <div className="text-center sm:text-left">
-        <div className="inline-block text-2xl mb-10 px-2 py-1 text-transparent bg-clip-text bg-gradient-to-b from-rose-500 via-pink-300 to-amber-200">
+        <div className="inline-block text-3xl mb-10 px-2 py-1 text-transparent bg-clip-text bg-gradient-to-b from-rose-500 via-pink-300 to-orange-300">
           Featured Projects
         </div>
       </div>

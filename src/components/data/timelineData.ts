@@ -36,7 +36,7 @@ export const timelineData: timeline[] = [
     logo: "/logos/plus1.svg",
   },
   {
-    title: "Embedded Software Engineer",
+    title: "Embedded Software Engineer @ BitHacks",
     extra: "",
     location: "BitHacks",
     date: "April 2025",
