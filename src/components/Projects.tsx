@@ -37,7 +37,9 @@ const Projects = () => {
       className="w-[1000px] overflow-hidden mx-auto py-8 mt-[64px]"
       id="projects"
     >
-      <div className="text-white  text-2xl mb-10"> Featured Projects</div>
+      <div className="inline-block bg-clip-text text-transparent  bg-gradient-to-b to-pink-600 via-pink-400 from-rose-400 px-2 py-1 text-2xl mb-10">
+        Featured Projects
+      </div>
 
       <motion.div
         className="flex gap-6"
@@ -52,13 +54,13 @@ const Projects = () => {
             target="_blank"
             rel="noopener noreferer"
             whileHover={{ scale: 1.05, zIndex: 1 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            transition={{ type: "spring", stiffness: 300, damping: 35 }}
           >
             <div
               key={i}
               className="w-[700px] h-[600px] bg-black/20 p-6 rounded-2xl shadow-md flex flex-col items-center"
             >
-              <h3 className="text-xl font-bold text-white mb-4 ">
+              <h3 className="text-xl font-light text-white mb-4 ">
                 {project.title}
               </h3>
               <div className="inline-flex items-center justify-center bg-white/5 rounded-2xl p-1 mb-4">
@@ -78,7 +80,7 @@ const Projects = () => {
                     return (
                       <span
                         key={index}
-                        className="flex items-center gap-2 border text-white px-3 py-1 rounded-full text-sm"
+                        className="flex items-center gap-2 border text-white px-3 py-1 rounded-full text-sm font-extralight"
                         style={{ borderColor: badgeColor }}
                       >
                         {Icon && (
@@ -91,7 +93,9 @@ const Projects = () => {
                 </span>
               </div>
 
-              <p className="text-white mt-8 text-sm">{project.description}</p>
+              <p className="text-white mt-8 text-sm font-light">
+                {project.description}
+              </p>
             </div>
           </motion.a>
         ))}

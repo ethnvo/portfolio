@@ -45,7 +45,7 @@ export const timelineData: timeline[] = [
     logo: "/logos/bithacks.png",
   },
   {
-    title: "Software Engineering Fellow",
+    title: "Software Engineering Fellow @ Headstarter",
     extra: "",
     location: "Headstarter AI - Remote",
     date: "June 2024 – September 2024",
