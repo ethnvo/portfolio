@@ -50,11 +50,11 @@ const Projects = () => {
   return (
     <div
       id="projects"
-      className="w-full overflow-x-hidden overflow-y-hidden py-8 mt-16"
+      className="w-full overflow-x-hidden overflow-y-hidden py-8 mt-[40px] sm:mt-[450px]"
     >
       <div className="max-w-[1000px] mx-auto w-full px-4 sm:px-0">
         <div className="flex justify-center sm:justify-start">
-          <div className="text-3xl mb-10 px-2 py-1 text-transparent bg-clip-text bg-gradient-to-b from-rose-500 via-pink-300 to-orange-300">
+          <div className="sm:text-3xl text-4xl mb-10 px-2 py-1 text-transparent bg-clip-text bg-gradient-to-b from-rose-500 via-pink-300 to-orange-300">
             Featured Projects
           </div>
         </div>

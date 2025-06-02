@@ -16,15 +16,22 @@ const Timeline = () => {
         max-w-6xl
         mx-auto
         px-4
+        sm:py-10
         sm:px-6
         lg:px-8
         mb-40
       "
       id="timeline"
     >
-      {/* Responsive heading spacing */}
-      <h2
-        className="
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4, delay: 0.1 }}
+      >
+        {/* Responsive heading spacing */}
+        <h2
+          className="
           text-transparent
           bg-gradient-to-b
           bg-clip-text
@@ -34,12 +41,13 @@ const Timeline = () => {
           text-5xl
           text-center
           mt-10
-          mb-10
-          sm:mb-[192px]
+          mb-20
+          sm:mb-[100px]
         "
-      >
-        Timeline
-      </h2>
+        >
+          Timeline
+        </h2>
+      </motion.div>
 
       <div className="relative">
         {/* Central line: spans entire stack on mobile, extends below on sm+ */}
@@ -149,7 +157,7 @@ const Timeline = () => {
                   /* At md (≥768px), undo translation and push icon out to edge */
                   md:left-auto
                   md:translate-x-0
-                  ${i % 2 === 0 ? "md:-left-[26px]" : "md:-right-7"}
+                  ${i % 2 === 0 ? "md:-left-[25px]" : "md:-right-7"}
                 `}
               />
 
