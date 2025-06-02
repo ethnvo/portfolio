@@ -16,7 +16,7 @@ const Timeline = () => {
       id="timeline"
     >
       {/*  Heading with reduced margins */}
-      <h2 className="text-transparent bg-gradient-to-b bg-clip-text from-rose-500 via-pink-400 to-amber-400  text-wrap text-4xl text-center mt-10 mb-[192px]">
+      <h2 className="text-transparent bg-gradient-to-b bg-clip-text from-rose-500 via-pink-300 to-amber-200  text-wrap text-4xl text-center mt-10 mb-[192px]">
         Timeline
       </h2>
 
