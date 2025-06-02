@@ -2,20 +2,18 @@ import Navbar from "./components/Navbar";
 import About from "./components/About";
 import Timeline from "./components/Timeline";
 import Projects from "./components/Projects";
-//import Contact from "./components/Contact";
 
 function App() {
   return (
-    <div className="min-h-screen">
-      <div className="fixed top-0 -z-10 min-h-screen w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,105,180,0.3),rgba(255,255,255,0))]"></div>
+    <div className="relative min-h-screen">
+      <div className="fixed inset-0 -z-10 h-full min-h-screen w-full bg-neutral-950 bg-[radial-gradient(ellipse_100%_80%_at_50%_20%,rgba(255,105,180,0.25),transparent)]" />
       <Navbar />
       <About />
       <Timeline />
       <Projects />
-      {/* 
-      <Projects />
-      <Contact /> */}
-      <div className="h-[200px]" />
+      <footer className="text-center text-sm text-gray-500 py-10">
+        © 2025 Ethan Vo. Built with React & TailwindCSS.
+      </footer>
     </div>
   );
 }
