@@ -42,7 +42,13 @@ const Projects = () => {
         onMouseLeave={() => setPaused(false)}
       >
         {looped.map((project, i) => (
-          <a href={looped[i].link} target="_blank" rel="noopener noreferer">
+          <motion.a
+            href={looped[i].link}
+            target="_blank"
+            rel="noopener noreferer"
+            whileHover={{ scale: 1.05, zIndex: 1 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          >
             <div
               key={i}
               className="w-[700px] h-[600px] bg-black/20 p-6 rounded-2xl shadow-md flex flex-col items-center"
@@ -76,7 +82,7 @@ const Projects = () => {
 
               <p className="text-white mt-8 text-sm">{project.description}</p>
             </div>
-          </a>
+          </motion.a>
         ))}
       </motion.div>
     </div>
