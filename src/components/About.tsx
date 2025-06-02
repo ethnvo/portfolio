@@ -4,54 +4,159 @@ import { BiLogoGithub, BiLogoInstagram, BiLogoLinkedin } from "react-icons/bi";
 const About = () => {
   return (
     <div
-      className="mx-auto max-w-6xl w-full min-h-screen p-4 md:p-8 lg:p-28 flex items-center justify-center"
       id="about"
+      className="
+        w-full
+        bg-transparent
+        px-4            /* small horizontal padding on mobile */
+        py-32           /* vertical padding top/bottom */
+        flex
+        flex-col
+        items-center    /* center everything on mobile */
+        text-center     /* center text on mobile */
+      "
     >
       <motion.div
         initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: -70 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="flex flex-col-reverse items-center justify-center md:flex md:flex-row gap-8 md:gap-16 lg:gap-24"
+        className="
+          w-full
+          flex
+          flex-col
+          items-center
+          gap-8
+
+          /* At md and above, switch to a row and cap at a wider container */
+          md:flex-row
+          md:items-start
+          md:text-left
+          md:max-w-6xl     /* now the flex container can grow up to 6xl on desktop */
+          md:px-8          /* add some horizontal padding on larger screens */
+        "
       >
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex flex-col items-center md:items-start justify-center gap-3"
-        >
-          <span className="px-2 py-1 text-white bg-zinc-800 rounded-full text-xs md:text-s">
+        {/* Image wrapper */}
+        <div className="flex justify-center md:justify-start">
+          <img
+            src="profileimg2.jpg"
+            alt="Profile Picture of Ethan Vo"
+            className="
+              w-48
+              h-48
+              md:w-80        /* larger on md+ */
+              md:h-80
+              rounded-full  /* keep as a circle */
+              object-cover
+              hover:shadow-2xl
+              hover:shadow-pink-500
+              hover:scale-105
+              hover:rotate-2
+              transition-all
+              duration-500
+            "
+          />
+        </div>
+
+        {/* Text block */}
+        <div className="flex flex-col items-center gap-4 md:items-start md:pl-12">
+          <span
+            className="
+            px-2
+            py-1
+            text-white
+            bg-zinc-800
+            rounded-full
+            text-xs
+            md:text-sm
+          "
+          >
             Open to Work
           </span>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-center md:text-left bg-gradient-to-b from-rose-500 via-pink-300 to-orange-200 text-transparent bg-clip-text">
+
+          <h1
+            className="
+            text-4xl
+            md:text-5xl
+            lg:text-6xl
+            font-semibold
+            bg-gradient-to-b
+            from-rose-500
+            via-pink-300
+            to-orange-200
+            text-transparent
+            bg-clip-text
+          "
+          >
             Ethan Vo
           </h1>
 
-          <h3 className="text-xl md:text-2xl lg:text-3xl font-light text-center md:text-left bg-gradient-to-b to-pink-600 via-pink-400 from-rose-400 text-transparent bg-clip-text">
+          <h2
+            className="
+            text-lg
+            md:text-xl
+            lg:text-2xl
+            font-light
+            bg-gradient-to-b
+            from-rose-400
+            via-pink-400
+            to-pink-600
+            text-transparent
+            bg-clip-text
+          "
+          >
             Fullstack Engineer
-          </h3>
-          <p className="text-sm text-slate-400  text-center md:text-left text-pretty">
+          </h2>
+
+          <p className="text-sm text-slate-400 max-w-md">
             I’m Ethan Vo, a second-year Business Info Management and Software
             Engineering major at UC Irvine. I thrive in high-pressure
             environments like hackathons and team projects, and I’m focused on
             growing as a software engineer with an interest in product and
             user-centered design.
           </p>
-          <div className="flex  gap-5 mt-3">
+
+          <div className="flex gap-6 py-4">
             <a
               href="https://github.com/ethnvo/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <BiLogoGithub className="scale-125 text-2xl md:text-3xl text-white cursor-pointer transition-all duration-300 ease-in-out hover:scale-150 hover:text-[#6e7681] hover:rotate-6" />
+              <BiLogoGithub
+                className="
+                text-2xl
+                md:text-3xl
+                text-white
+                cursor-pointer
+                transition-all
+                duration-300
+                ease-in-out
+                hover:scale-125
+                hover:rotate-6
+                hover:text-[#6e7681]
+              "
+              />
             </a>
+
             <a
               href="https://www.linkedin.com/in/ethnvo/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <BiLogoLinkedin className="text-2xl md:text-3xl scale-125 text-white cursor-pointer transition-all duration-300 ease-in-out hover:scale-150 hover:text-[#0A66C2] hover:rotate-6" />
+              <BiLogoLinkedin
+                className="
+                text-2xl
+                md:text-3xl
+                text-white
+                cursor-pointer
+                transition-all
+                duration-300
+                ease-in-out
+                hover:scale-125
+                hover:rotate-6
+                hover:text-[#0A66C2]
+              "
+              />
             </a>
 
             <a
@@ -59,35 +164,77 @@ const About = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <BiLogoInstagram className="text-2xl md:text-3xl scale-125 text-white cursor-pointer transition-all duration-300 ease-in-out hover:scale-150 hover:text-pink-500 hover:rotate-6" />
+              <BiLogoInstagram
+                className="
+                text-2xl
+                md:text-3xl
+                text-white
+                cursor-pointer
+                transition-all
+                duration-300
+                ease-in-out
+                hover:scale-125
+                hover:rotate-6
+                hover:text-[#e1306c]
+              "
+              />
+            </a>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4">
+            <a
+              href="/resume.pdf"
+              download
+              className="
+                inline-block
+                bg-gradient-to-tr
+                from-orange-300
+                via-rose-500
+                to-orange-300
+                bg-[length:400%_400%]
+                bg-[position:0%_50%]
+                hover:animate-gradient-x
+                p-[2px]
+                rounded-lg
+                transition-all
+              "
+            >
+              <div
+                className="
+                backdrop-blur-md
+                text-white
+                drop-shadow-md
+                px-6
+                py-3
+                rounded-lg
+                text-base
+                font-medium
+              "
+              >
+                Download CV
+              </div>
             </a>
 
-            <div className="flex items-center gap-4">
-              <a
-                href="/resume.pdf"
-                download
-                className="inline-block bg-gradient-to-tr from-orange-300 via-rose-500 to-orange-300 bg-[length:400%_400%] bg-[position:0%_50%] hover:animate-gradient-x p-[2px] rounded-lg transition-all"
-              >
-                <div className="backdrop-blur-md text-white drop-shadow-md px-4 py-2 rounded-lg text-md leading-none font-medium">
-                  Download CV
-                </div>
-              </a>
-
-              <a
-                href="mailto:ekvo@uci.edu"
-                className="px-4 py-2 border border-pink-500 text-pink-500 rounded-lg hover:bg-pink-600 hover:text-white transition-all text-md leading-none font-medium"
-              >
-                Contact Me
-              </a>
-            </div>
+            <a
+              href="mailto:ekvo@uci.edu"
+              className="
+                px-6
+                py-3
+                border
+                border-pink-500
+                text-pink-500
+                rounded-lg
+                hover:bg-pink-600
+                hover:text-white
+                transition-all
+                text-base
+                font-medium
+              "
+            >
+              Contact Me
+            </a>
           </div>
-        </motion.div>
-
-        <img
-          src="profileimg2.jpg"
-          className="w-[300px] md:w-[400px] rounded-full hover:shadow-2xl hover:shadow-pink-500 hover:scale-105 hover:rotate-2 transition-all duration-500"
-          alt="Profile Picture of Ethan Vo"
-        />
+        </div>
       </motion.div>
     </div>
   );
