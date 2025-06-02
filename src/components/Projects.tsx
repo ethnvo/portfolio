@@ -34,11 +34,13 @@ const Projects = () => {
 
   return (
     <div
-      className="w-[1000px] overflow-hidden mx-auto py-8 mt-[64px]"
+      className="w-[1000px] overflow-hidden mx-auto py-8 mt-[64px] "
       id="projects"
     >
-      <div className="inline-block bg-clip-text text-transparent  bg-gradient-to-b from-rose-500 via-pink-300 to-amber-200 px-2 py-1 text-2xl mb-10">
-        Featured Projects
+      <div className="text-center sm:text-left">
+        <div className="inline-block text-2xl mb-10 px-2 py-1 text-transparent bg-clip-text bg-gradient-to-b from-rose-500 via-pink-300 to-amber-200">
+          Featured Projects
+        </div>
       </div>
 
       <motion.div
@@ -93,7 +95,7 @@ const Projects = () => {
                 </span>
               </div>
 
-              <p className="text-white mt-8 text-sm font-light">
+              <p className="text-white mt-8 text-sm  font-light">
                 {project.description}
               </p>
             </div>
