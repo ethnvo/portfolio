@@ -187,10 +187,10 @@ const About = () => {
               download
               className="
                 inline-block
-                bg-gradient-to-tr
-                from-orange-300
+                bg-gradient-to-r
+                from-rose-300
                 via-rose-500
-                to-orange-300
+                to-pink-600
                 bg-[length:400%_400%]
                 bg-[position:0%_50%]
                 hover:animate-gradient-x
