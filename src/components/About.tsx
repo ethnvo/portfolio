@@ -98,8 +98,8 @@ const About = () => {
             lg:text-2xl
             font-light
             bg-gradient-to-b
-            from-rose-400
-            via-pink-400
+            from-rose-100
+            via-pink-300
             to-pink-600
             text-transparent
             bg-clip-text
@@ -108,7 +108,7 @@ const About = () => {
             Fullstack Engineer
           </h2>
 
-          <p className="text-sm text-slate-400 font-light max-w-md">
+          <p className="text-sm text-white font-light max-w-md">
             I’m Ethan Vo, a second-year Business Info Management and Software
             Engineering major at UC Irvine. <br /> <br />I thrive in
             high-pressure environments such as hackathons and team projects, and
@@ -183,7 +183,7 @@ const About = () => {
 
           <div className="flex flex-col sm:flex-row gap-4">
             <a
-              href="/resume.pdf"
+              href="/Resume_Ethan_Vo_2025.pdf"
               download
               className="
                 inline-block

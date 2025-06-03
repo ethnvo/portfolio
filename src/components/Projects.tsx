@@ -110,7 +110,7 @@ const Projects = () => {
                   })}
                 </div>
 
-                <p className="text-slate-300 text-sm font-light text-center leading-relaxed flex-grow">
+                <p className="text-white text-sm font-light text-center leading-relaxed flex-grow">
                   {project.description}
                 </p>
               </a>
