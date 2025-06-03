@@ -112,11 +112,11 @@ const About = () => {
             Hi! I’m Ethan Vo, a second-year Business Information Management and
             Software Engineering major at UC Irvine.
             <br />
-            <br />I genuinely enjoy high-energy environments like hackathons and
-            collaborative projects- places where I can build fast, think
-            creatively, and work closely with others. I’m always looking to
-            level up as a software engineer, especially in areas like product
-            development and user-centered design.
+            <br />I genuinely enjoy high-energy spaces like hackathons and team
+            projects- any excuse to build fast, think big, and have fun solving
+            problems with others. I’m always looking to level up my skills as a
+            software engineer, especially when it comes to product design and
+            creating things people actually love to use.
           </p>
 
           <div className="flex gap-6 py-4">
