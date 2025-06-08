@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const borderColors = [
   "border-orange-200",
   "border-[#CA906C]",
-  "border-amber-600",
+  "border-[#FB8791]",
   "border-rose-400",
   "border-pink-500",
 ];
@@ -97,7 +97,7 @@ const Timeline = () => {
                 visible: {
                   opacity: 1,
                   y: 0,
-                  transition: { delay: i * 0.2 },
+                  transition: { delay: i * 0.1 },
                 },
               }}
               className={`
@@ -116,7 +116,10 @@ const Timeline = () => {
                 overflow-visible
                 flex
                 flex-col
-
+                border border-transparent    
+              shadow-pink-200/20
+              hover:shadow-rose-400/50
+                transition-all
                 /* Center on mobile */
                 mx-auto
                 text-center
@@ -158,10 +161,7 @@ const Timeline = () => {
               />
 
               <a href="#projects">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                >
+                <div className="">
                   <h2
                     className="
                       truncate
@@ -241,7 +241,7 @@ const Timeline = () => {
                   >
                     {entry.description}
                   </p>
-                </motion.div>
+                </div>
               </a>
             </motion.div>
           ))}

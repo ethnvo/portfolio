@@ -98,8 +98,8 @@ const About = () => {
             lg:text-2xl
             font-light
             bg-gradient-to-b
-            from-rose-400
-            via-pink-400
+            from-rose-100
+            via-pink-300
             to-pink-600
             text-transparent
             bg-clip-text
@@ -108,12 +108,15 @@ const About = () => {
             Fullstack Engineer
           </h2>
 
-          <p className="text-sm text-slate-400 font-light max-w-md">
-            I’m Ethan Vo, a second-year Business Info Management and Software
-            Engineering major at UC Irvine. <br /> <br />I thrive in
-            high-pressure environments such as hackathons and team projects, and
-            I’m focused on growing as a software engineer with an interest in
-            product and user-centered design.
+          <p className="text-sm text-white font-light max-w-md">
+            Hi! I’m Ethan Vo, a second-year Business Information Management and
+            Software Engineering major at UC Irvine.
+            <br />
+            <br />I genuinely enjoy high-energy spaces like hackathons and team
+            projects- any excuse to build fast, think big, and have fun solving
+            problems with others. I’m always looking to level up my skills as a
+            software engineer, especially when it comes to product design and
+            creating things people actually love to use.
           </p>
 
           <div className="flex gap-6 py-4">
@@ -183,14 +186,14 @@ const About = () => {
 
           <div className="flex flex-col sm:flex-row gap-4">
             <a
-              href="/resume.pdf"
+              href="/Resume_Ethan_Vo_2025.pdf"
               download
               className="
                 inline-block
-                bg-gradient-to-tr
-                from-orange-300
+                bg-gradient-to-r
+                from-rose-300
                 via-rose-500
-                to-orange-300
+                to-pink-600
                 bg-[length:400%_400%]
                 bg-[position:0%_50%]
                 hover:animate-gradient-x
