@@ -167,7 +167,7 @@ const Timeline = () => {
                       truncate
                       text-lg
                       sm:text-xl
-                      font-light
+                      font-medium
                       text-transparent
                       bg-clip-text
                       bg-gradient-to-b
@@ -235,7 +235,10 @@ const Timeline = () => {
                     </span>
                   </div>
 
-                  <p className="mt-3 text-sm sm:text-base text-white">
+                  <p
+                    className="mt-3 text-xs sm:text-base  text-white"
+                    style={{ fontWeight: "350" }}
+                  >
                     {entry.description}
                   </p>
                 </motion.div>
