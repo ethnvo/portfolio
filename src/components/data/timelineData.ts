@@ -5,12 +5,26 @@ export type timeline = {
   date: string;
   description: string;
   logo: string;
+  in_dev: boolean;
 };
 
 export const timelineData: timeline[] = [
   {
+    title: "Co-Founder & Fullstack Lead @ Plus1 (React Native)",
+    in_dev: true,
+    extra: "",
+    location: "Irvine, CA",
+    date: "June 2025",
+    description:
+      "Actively leading the rebuild of Plus1 - a spontaneous event planning app for students - using React Native. Managing development, product vision, and a refreshed team structure to bring it to launch.",
+
+    logo: "/logos/neoplus1.png",
+  },
+  {
     title: "Fullstack Developer & System Architect @ auther.",
     extra: "1st Place 🏆 - Best Female Empowerment",
+    in_dev: false,
+
     location: "VenusHacks",
     date: "May 2025",
     description:
@@ -18,6 +32,8 @@ export const timelineData: timeline[] = [
     logo: "/logos/auther500.png",
   },
   {
+    in_dev: false,
+
     title: "Backend Developer & System Architect @ AWSpeak",
     extra: "Top 5 Finalist",
     location: "AWS Cloudhacks",
@@ -27,8 +43,10 @@ export const timelineData: timeline[] = [
     logo: "/logos/awspeak.jpeg",
   },
   {
-    title: "Fullstack Engineer @ Plus1",
+    title: "Fullstack Engineer @ Plus1 (Flutter)",
     extra: "",
+    in_dev: false,
+
     location: "LAHacks",
     date: "April 2025",
     description:
@@ -40,6 +58,8 @@ export const timelineData: timeline[] = [
     extra: "",
     location: "BitHacks",
     date: "April 2025",
+    in_dev: false,
+
     description:
       "Developed a real-time embedded systems app using ESP-32, C, and C++. Focused on hardware integration and UI visualization under tight time constraints.",
     logo: "/logos/bithacks.png",
@@ -47,6 +67,8 @@ export const timelineData: timeline[] = [
   {
     title: "Software Engineering Fellow @ Headstarter",
     extra: "",
+    in_dev: false,
+
     location: "Headstarter AI - Remote",
     date: "June 2024 – September 2024",
     description:

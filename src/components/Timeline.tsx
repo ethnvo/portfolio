@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 
 const borderColors = [
   "border-orange-200",
-  "border-[#CA906C]",
+  "border-[#FEDBD3]",
+  "border-[#FD9998]",
   "border-[#FB8791]",
   "border-rose-400",
   "border-pink-500",
@@ -50,57 +51,41 @@ const Timeline = () => {
         </h2>
       </motion.div>
 
-      <div className="relative">
-        {/* Central line: spans entire stack on mobile, extends below on sm+ */}
-        <div
-          className="
-            absolute
-            left-1/2
-            top-0
-            bottom-0
-            sm:bottom-[-50px]
-            w-1
-            bg-gradient-to-b
-            from-orange-200
-            via-rose-400
-            to-pink-500
-            transform
-            -translate-x-1/2
-          "
-        />
+      <div
+        className="
+    relative
+    flex flex-col
+    space-y-8
+    sm:space-y-0
 
-        {/**
-          Card container:
-          • mobile: auto height, vertical stack with space-y-8  
-          • sm+: fixed height of 800px, justify-between  
-        */}
-        <div
-          className="
-            relative
-            flex
-            flex-col
-            h-auto
-            space-y-8
-            sm:h-[800px]
-            sm:justify-between
-            sm:space-y-0
-          "
-        >
-          {timelineData.map((entry, i) => (
-            <motion.div
-              key={i}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={{
-                hidden: { opacity: 0, y: 50 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { delay: i * 0.1 },
-                },
-              }}
-              className={`
+    before:content-['']
+    before:absolute
+    before:left-1/2
+    before:top-0
+    before:w-1
+    before:h-full
+    before:bg-gradient-to-b
+    before:from-orange-200
+    before:via-rose-400
+    before:to-pink-500
+    before:-translate-x-1/2
+  "
+      >
+        {timelineData.map((entry, i) => (
+          <motion.div
+            key={i}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              hidden: { opacity: 0, y: 50 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { delay: i * 0.1 },
+              },
+            }}
+            className={`
                 relative
                 w-full
                 md:w-1/2           /* Half-width only at ≥768px */
@@ -133,17 +118,17 @@ const Timeline = () => {
                     : "sm:mr-0 md:mr-auto md:text-right"
                 }
               `}
-            >
-              {/**
+          >
+            {/**
                 Connector icon:
                 • mobile (<640px): center over card  
                 • sm (≥640px but <768px): we’re still full-width, so keep centering  
                 • md (≥768px): card is now 50%, so remove centering and push left/right
               */}
-              <img
-                src={entry.logo}
-                alt=""
-                className={`
+            <img
+              src={entry.logo}
+              alt=""
+              className={`
     absolute
     -top-12
     h-12 w-12 sm:h-14 sm:w-14
@@ -158,12 +143,12 @@ const Timeline = () => {
     md:translate-x-0
     ${i % 2 === 0 ? "md:-left-[25px]" : "md:left-auto md:-right-7"}
   `}
-              />
+            />
 
-              <a href="#projects">
-                <div className="">
-                  <h2
-                    className="
+            <a href="#projects">
+              <div className="">
+                <h2
+                  className="
                       truncate
                       text-lg
                       sm:text-xl
@@ -176,19 +161,19 @@ const Timeline = () => {
                       to-orange-300
 
                     "
-                  >
-                    {entry.title}
-                  </h2>
+                >
+                  {entry.title}
+                </h2>
 
-                  {/**
+                {/**
                     Badges:
                     • mobile (<640px): always centered  
                     • sm (≥640px but <768px): still full-width cards, so center  
                     • md (≥768px): if card is on the right half (even index → md:w-1/2), badges justify-start; 
                                  if card is on the left half (odd index), badges justify-end 
                   */}
-                  <div
-                    className={`
+                <div
+                  className={`
                       mt-2
                       w-full
                       flex
@@ -203,25 +188,47 @@ const Timeline = () => {
                         i % 2 === 0 ? "md:justify-start" : "md:justify-end"
                       }
                     `}
-                  >
-                    {entry.extra && (
-                      <span
-                        className="
+                >
+                  {entry.in_dev && (
+                    <span
+                      className="
+                        px-3
+                        py-1
+                        rounded-full
+                        text-xs
+                        sm:text-sm
+                        border border-pink-300
+                        text-white
+                        bg-pink-500/10
+                        shadow-sm
+                        backdrop-blur-sm
+                        font-medium
+                        tracking-wide
+                      "
+                    >
+                      In Development
+                    </span>
+                  )}
+
+                  {entry.extra && (
+                    <span
+                      className="
                           px-3
                           py-1
                           border
                           border-yellow-400
+                          bg-yellow-400/10
                           rounded-full
                           text-xs
                           sm:text-sm
                           text-white
                         "
-                      >
-                        {entry.extra}
-                      </span>
-                    )}
-                    <span
-                      className="
+                    >
+                      {entry.extra}
+                    </span>
+                  )}
+                  <span
+                    className="
                         px-3
                         py-1
                         bg-gray-400/20
@@ -230,22 +237,21 @@ const Timeline = () => {
                         sm:text-sm
                         text-white
                       "
-                    >
-                      {entry.date}
-                    </span>
-                  </div>
-
-                  <p
-                    className="mt-3 text-xs sm:text-base  text-white"
-                    style={{ fontWeight: "350" }}
                   >
-                    {entry.description}
-                  </p>
+                    {entry.date}
+                  </span>
                 </div>
-              </a>
-            </motion.div>
-          ))}
-        </div>
+
+                <p
+                  className="mt-3 text-xs sm:text-base  text-white"
+                  style={{ fontWeight: "350" }}
+                >
+                  {entry.description}
+                </p>
+              </div>
+            </a>
+          </motion.div>
+        ))}
       </div>
     </div>
   );
