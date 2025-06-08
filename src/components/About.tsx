@@ -187,7 +187,8 @@ const About = () => {
           <div className="flex flex-col sm:flex-row gap-4">
             <a
               href="/Resume_Ethan_Vo_2025.pdf"
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="
                 inline-block
                 bg-gradient-to-r
@@ -214,7 +215,7 @@ const About = () => {
                 font-medium
               "
               >
-                Download CV
+                Explore my CV
               </div>
             </a>
 
