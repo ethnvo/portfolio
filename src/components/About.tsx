@@ -109,8 +109,8 @@ const About = () => {
           </h2>
 
           <p className="text-sm text-white font-light max-w-md">
-            Hi! I’m Ethan Vo, a second-year Business Information Management and
-            Software Engineering major at UC Irvine.
+            Hi! I’m Ethan Vo, a rising third-year Business Information
+            Management and Software Engineering major at UC Irvine.
             <br />
             <br />I genuinely enjoy high-energy spaces like hackathons and team
             projects- any excuse to build fast, think big, and have fun solving
