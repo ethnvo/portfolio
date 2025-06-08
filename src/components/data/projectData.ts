@@ -101,7 +101,7 @@ export const projects: Project[] = [
       "AWSpeak provides hyper-realistic, AI-powered mock interviews simulating Amazon's leadership principles. Users get voice-driven sessions tailored to specific job descriptions, followed by detailed feedback and downloadable transcripts.",
   },
   {
-    title: "Plus1",
+    title: "Plus1 (Flutter)",
     logo: "/logos/plus1.svg",
     link: "https://devpost.com/software/plus1-ypledt",
     colors: [FLUTTERCOLOR, DARTCOLOR, FIREBASECOLOR],

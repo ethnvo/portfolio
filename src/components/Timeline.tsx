@@ -197,16 +197,16 @@ const Timeline = () => {
                         rounded-full
                         text-xs
                         sm:text-sm
-                        border border-pink-300
-                        text-white
-                        bg-pink-500/10
+                        border border-orange-400
+                        bg-orange-400/10
+                        text-yellow-100
                         shadow-sm
                         backdrop-blur-sm
                         font-medium
                         tracking-wide
                       "
                     >
-                      In Development
+                      Active 🔥
                     </span>
                   )}
 
