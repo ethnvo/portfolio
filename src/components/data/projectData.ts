@@ -36,6 +36,16 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    title: "Plus1 (React Native)",
+    logo: "/logos/neoplus1.svg",
+    link: "https://devpost.com/software/plus1-ypledt",
+    colors: [REACTCOLOR, DARTCOLOR, FIREBASECOLOR],
+    technologies: ["React Native", "TypeScript", "Google Firebase"],
+    techlogos: [BiLogoReact, BiLogoTypescript, BiLogoFirebase],
+    description:
+      "What started as a Flutter MVP at LAHacks 2025 has been completely reimagined with a new team and sharper vision. Plus1 lets students casually find or create real-time meetups like study sessions or lunch hangouts. Designed for low-commitment, instant connection with minimal UI friction. We focused on speed, simplicity, and real-time updates - making social planning feel natural, not overwhelming.",
+  },
+  {
     title: "auther.",
     logo: "/logos/auther500.png",
     link: "https://devpost.com/software/auther",
@@ -101,7 +111,7 @@ export const projects: Project[] = [
       "AWSpeak provides hyper-realistic, AI-powered mock interviews simulating Amazon's leadership principles. Users get voice-driven sessions tailored to specific job descriptions, followed by detailed feedback and downloadable transcripts.",
   },
   {
-    title: "Plus1 (Flutter)",
+    title: "Plus1 (Flutter MVP)",
     logo: "/logos/plus1.svg",
     link: "https://devpost.com/software/plus1-ypledt",
     colors: [FLUTTERCOLOR, DARTCOLOR, FIREBASECOLOR],

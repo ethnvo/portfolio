@@ -18,7 +18,7 @@ export const timelineData: timeline[] = [
     description:
       "Actively leading the rebuild of Plus1 - a spontaneous event planning app for students - using React Native. Managing development, product vision, and a refreshed team structure to bring it to launch.",
 
-    logo: "/logos/neoplus1.png",
+    logo: "/logos/neoplus1.svg",
   },
   {
     title: "Fullstack Developer & System Architect @ auther.",
