@@ -19,19 +19,19 @@ function App() {
       >
         <div
           className="
-      absolute
-      inset-0
-      blur-[120px]
-      bg-[radial-gradient(ellipse_80%_80%_at_50%_80%,#ffc371_0%,#ff5f6d_25%,#6a85f1_55%,transparent_100%)]
-    "
+    absolute
+    inset-0
+    blur-[120px]
+    bg-[radial-gradient(ellipse_80%_80%_at_50%_100%,#ffc371_0%,#ff5f6d_25%,#6a85f1_55%,transparent_100%)]
+  "
         />
       </div>
-
+      <div className="fixed inset-0 z-0 bg-[url('/clean-gray-paper.png')] bg-repeat opacity-15 pointer-events-none" />
       <Navbar />
       <About />
       <Timeline />
       <Projects />
-      <footer className="text-center text-sm text-gray-500 py-10">
+      <footer className="text-center text-sm text-white py-10">
         © 2025 Ethan Vo. Built with React & TailwindCSS.
       </footer>
     </div>

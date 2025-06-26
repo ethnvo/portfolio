@@ -136,7 +136,7 @@ const About = () => {
                 ease-in-out
                 hover:scale-125
                 hover:rotate-6
-                hover:text-[#6e7681]
+                hover:text-[#02040A]
               "
               />
             </a>
@@ -190,18 +190,20 @@ const About = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="
-                inline-block
-                bg-gradient-to-r
-                from-rose-300
-                via-rose-500
-                to-pink-600
-                bg-[length:400%_400%]
-                bg-[position:0%_50%]
-                hover:animate-gradient-x
-                p-[2px]
-                rounded-lg
-                transition-all
-              "
+              inline-block
+              bg-gradient-to-t
+              to-rose-500
+              via-purple-400
+              from-rose-500
+              bg-[length:400%_400%]
+              bg-[position:0%_10%]
+              hover:bg-[position:50%_100%]
+              p-[2px]
+              rounded-lg
+              transition-[background-position]
+              duration-500
+              ease-in-out
+            "
             >
               <div
                 className="
@@ -225,10 +227,11 @@ const About = () => {
                 px-6
                 py-3
                 border
-                border-pink-500
-                text-pink-500
+                border-pink-300
+                text-pink-300
                 rounded-lg
                 hover:bg-pink-600
+                hover:border-transparent
                 hover:text-white
                 transition-all
                 text-base

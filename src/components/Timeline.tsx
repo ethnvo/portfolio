@@ -36,7 +36,7 @@ const Timeline = () => {
           text-transparent
           bg-gradient-to-b
           bg-clip-text
-          from-rose-500
+          from-blue-500
           via-pink-300
           to-orange-200
           text-5xl

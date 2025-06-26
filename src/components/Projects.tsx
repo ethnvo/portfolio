@@ -18,7 +18,7 @@ const Projects = () => {
         <h2
           className="leading-tight text-4xl sm:text-5xl font-medium text-center
              text-transparent bg-clip-text 
-             bg-gradient-to-b from-rose-500 via-pink-300 to-orange-200
+             bg-gradient-to-b from-blue-500 via-pink-300 to-orange-200
              mb-12 sm:mb-16 pb-1"
         >
           Featured Projects
@@ -39,7 +39,7 @@ const Projects = () => {
               border border-pink-500
               bg-black/20 
               
-              hover:shadow-yellow-400/30 hover:border-orange-300 transition-all duration-300 ease-out
+              hover:shadow-blue-400/30 hover:border-blue-300 transition-all duration-300 ease-out
             `;
 
             // Initial (not visible): translate to right and opacity 0
