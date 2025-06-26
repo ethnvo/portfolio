@@ -8,7 +8,6 @@ const borderColors = [
   "border-[#FB8791]",
   "border-rose-400",
   "border-pink-500",
-  "border-[#F05897]",
 ];
 
 const Timeline = () => {
@@ -145,8 +144,11 @@ const Timeline = () => {
     ${i % 2 === 0 ? "md:-left-[25px]" : "md:left-auto md:-right-7"}
   `}
             />
-
-            <a href="#projects">
+            <a
+              href={entry.is_exp ? entry.is_exp : "#projects"}
+              target={entry.is_exp ? "_blank" : "_self"}
+              rel={entry.is_exp ? "noopener noreferrer" : undefined}
+            >
               <div className="">
                 <h2
                   className="

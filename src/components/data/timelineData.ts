@@ -6,35 +6,37 @@ export type timeline = {
   description: string;
   logo: string;
   in_dev: boolean;
+  is_exp: string | null;
 };
 
 export const timelineData: timeline[] = [
   {
     title: "Software Engineer Intern @ koderAI",
     in_dev: true,
-    extra: "",
+    extra: null,
     location: "Irvine, CA",
     date: "June 2025 - Sept 2025",
     description: "TBD",
     logo: "/logos/koderAI.png",
+    is_exp: "https://koder.com/",
   },
 
   {
     title: "Co-Founder & Fullstack Lead @ Plus1 (React Native)",
     in_dev: true,
-    extra: "",
+    extra: null,
     location: "Irvine, CA",
     date: "June 2025",
     description:
       "Actively leading the rebuild of Plus1 - a spontaneous event planning app for students - using React Native. Managing development, product vision, and a refreshed team structure to bring it to launch.",
-
+    is_exp: null,
     logo: "/logos/neoplus1.svg",
   },
   {
     title: "Fullstack Developer & System Architect @ auther.",
     extra: "🏆 Best Female Empowerment",
     in_dev: false,
-
+    is_exp: null,
     location: "VenusHacks",
     date: "May 2025",
     description:
@@ -43,7 +45,7 @@ export const timelineData: timeline[] = [
   },
   {
     in_dev: false,
-
+    is_exp: null,
     title: "Backend Developer & System Architect @ AWSpeak",
     extra: "Top 5 Finalist",
     location: "AWS Cloudhacks",
@@ -54,9 +56,9 @@ export const timelineData: timeline[] = [
   },
   {
     title: "Fullstack Engineer @ Plus1 (Flutter)",
-    extra: "",
+    extra: null,
     in_dev: false,
-
+    is_exp: null,
     location: "LAHacks",
     date: "April 2025",
     description:
@@ -64,25 +66,14 @@ export const timelineData: timeline[] = [
     logo: "/logos/plus1.svg",
   },
   {
-    title: "Embedded Software Engineer @ BitHacks",
-    extra: "",
+    title: "Embedded Software Engineer @ AutoFeeder",
+    extra: null,
     location: "BitHacks",
     date: "April 2025",
     in_dev: false,
-
+    is_exp: null,
     description:
-      "Developed a real-time embedded systems app using ESP-32, C, and C++. Focused on hardware integration and UI visualization under tight time constraints.",
+      "Prototyped an automatic pet feeder using ESP-32 with C/C++, integrating real-time hardware control and a simple UI for timed feeding under tight constraints.",
     logo: "/logos/bithacks.png",
-  },
-  {
-    title: "Software Engineering Fellow @ Headstarter",
-    extra: "",
-    in_dev: false,
-
-    location: "Headstarter AI - Remote",
-    date: "June 2024 – September 2024",
-    description:
-      "Developed full-stack AI applications (React, Next.js, OpenAI APIs), shipped weekly features in agile teams, and gained expertise in scalable AI system design.",
-    logo: "/logos/headstarter.jpeg",
   },
 ];
