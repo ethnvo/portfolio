@@ -259,21 +259,14 @@ const Timeline = () => {
                     {entry.date}
                   </span>
                 </div>
-                {i % 2 === 0 ? (
-                  <p
-                    className="mt-3 ml-3 text-xs sm:text-base  text-white"
-                    style={{ fontWeight: "350" }}
-                  >
-                    {entry.description}
-                  </p>
-                ) : (
-                  <p
-                    className="mt-3 text-xs mr-3 sm:text-base  text-white"
-                    style={{ fontWeight: "350" }}
-                  >
-                    {entry.description}
-                  </p>
-                )}
+                <p
+                  className={`mt-3 text-xs sm:text-base text-white ${
+                    i % 2 === 0 ? "sm:ml-3 sm:mr-0" : "sm:mr-3 sm:ml-0"
+                  }`}
+                  style={{ fontWeight: "350" }}
+                >
+                  {entry.description}
+                </p>
               </div>
             </a>
           </motion.div>
