@@ -2,12 +2,13 @@ import { timelineData } from "./data/timelineData";
 import { motion } from "framer-motion";
 
 const borderColors = [
-  "border-orange-200",
+  "border-orange-300",
   "border-[#FEDBD3]",
   "border-[#FD9998]",
   "border-[#FB8791]",
   "border-rose-400",
   "border-pink-500",
+  "border-[#F05897]",
 ];
 
 const Timeline = () => {
@@ -206,7 +207,7 @@ const Timeline = () => {
                         tracking-wide
                       "
                     >
-                      Active 🔥
+                      🔥 Active
                     </span>
                   )}
 
@@ -227,6 +228,23 @@ const Timeline = () => {
                       {entry.extra}
                     </span>
                   )}
+                  {entry.location && (
+                    <span
+                      className="
+                          px-3
+                          py-1
+                          border
+                          border-blue-400
+                          bg-blue-400/10
+                          rounded-full
+                          text-xs
+                          sm:text-sm
+                          text-white
+                        "
+                    >
+                      📍 {entry.location}
+                    </span>
+                  )}
                   <span
                     className="
                         px-3
@@ -241,13 +259,21 @@ const Timeline = () => {
                     {entry.date}
                   </span>
                 </div>
-
-                <p
-                  className="mt-3 text-xs sm:text-base  text-white"
-                  style={{ fontWeight: "350" }}
-                >
-                  {entry.description}
-                </p>
+                {i % 2 === 0 ? (
+                  <p
+                    className="mt-3 ml-3 text-xs sm:text-base  text-white"
+                    style={{ fontWeight: "350" }}
+                  >
+                    {entry.description}
+                  </p>
+                ) : (
+                  <p
+                    className="mt-3 text-xs mr-3 sm:text-base  text-white"
+                    style={{ fontWeight: "350" }}
+                  >
+                    {entry.description}
+                  </p>
+                )}
               </div>
             </a>
           </motion.div>

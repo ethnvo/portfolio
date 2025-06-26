@@ -10,6 +10,16 @@ export type timeline = {
 
 export const timelineData: timeline[] = [
   {
+    title: "Software Engineer Intern @ koderAI",
+    in_dev: true,
+    extra: "",
+    location: "Irvine, CA",
+    date: "June 2025 - Sept 2025",
+    description: "TBD",
+    logo: "/logos/koderAI.png",
+  },
+
+  {
     title: "Co-Founder & Fullstack Lead @ Plus1 (React Native)",
     in_dev: true,
     extra: "",
@@ -22,7 +32,7 @@ export const timelineData: timeline[] = [
   },
   {
     title: "Fullstack Developer & System Architect @ auther.",
-    extra: "1st Place 🏆 - Best Female Empowerment",
+    extra: "🏆 Best Female Empowerment",
     in_dev: false,
 
     location: "VenusHacks",
