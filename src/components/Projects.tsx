@@ -1,9 +1,6 @@
 import React, { useRef } from "react";
-import { useInView } from "framer-motion"; // Make sure to install: npm install framer-motion
+import { useInView } from "framer-motion";
 import { projects } from "./data/projectData";
-
-// Placeholder for icon components (e.g., from react-icons or lucide-react)
-// Replace with your actual icon components
 
 const Projects = () => {
   // Ref on the container that wraps all cards

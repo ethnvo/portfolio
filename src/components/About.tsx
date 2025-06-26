@@ -81,7 +81,7 @@ const About = () => {
             lg:text-6xl
             font-semibold
             bg-gradient-to-b
-            from-rose-500
+            from-blue-500
             via-pink-300
             to-orange-200
             text-transparent
