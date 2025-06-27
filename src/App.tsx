@@ -26,7 +26,7 @@ function App() {
   "
         />
       </div>
-      <div className="fixed inset-0 z-0 bg-[url('/clean-gray-paper.png')] bg-repeat opacity-12 pointer-events-none" />
+      <div className="fixed inset-0 z-0 bg-[url('/clean-gray-paper.png')] bg-repeat opacity-[0.12] pointer-events-none" />
       <Navbar />
       <About />
       <Timeline />
