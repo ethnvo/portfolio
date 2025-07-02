@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
-import { BiLogoGithub, BiLogoInstagram, BiLogoLinkedin } from "react-icons/bi";
+import {
+  BiLogoGithub,
+  BiLogoInstagram,
+  BiLogoLinkedin,
+  BiLogoTiktok,
+} from "react-icons/bi";
 
 const About = () => {
   return (
@@ -179,6 +184,27 @@ const About = () => {
                 hover:scale-125
                 hover:rotate-6
                 hover:text-[#e1306c]
+              "
+              />
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@plsfundmystartup/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <BiLogoTiktok
+                className="
+                text-2xl
+                md:text-3xl
+                text-white
+                cursor-pointer
+                transition-all
+                duration-300
+                ease-in-out
+                hover:scale-125
+                hover:rotate-6
+                hover:text-black
               "
               />
             </a>
