@@ -103,9 +103,9 @@ const About = () => {
             lg:text-2xl
             font-light
             bg-gradient-to-b
-            from-rose-100
+            from-blue-500
             via-pink-300
-            to-pink-600
+            to-orange-200
             text-transparent
             bg-clip-text
           "
