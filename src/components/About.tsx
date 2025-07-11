@@ -189,7 +189,7 @@ const About = () => {
             </a>
 
             <a
-              href="https://www.tiktok.com/@plsfundmystartup/"
+              href="https://www.tiktok.com/@lockinethan/"
               target="_blank"
               rel="noopener noreferrer"
             >
