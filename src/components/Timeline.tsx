@@ -103,7 +103,7 @@ const Timeline = () => {
                 flex-col
                 border border-transparent    
               shadow-pink-200/20
-              hover:shadow-rose-400/50
+              hover:shadow-blue-400/50
                 transition-all
                 /* Center on mobile */
                 mx-auto
