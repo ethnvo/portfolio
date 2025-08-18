@@ -16,7 +16,7 @@ export const timelineData: timeline[] = [
     extra: null,
     location: "Irvine, CA",
     date: "June 2025 - Sept 2025",
-    description: "TBD",
+    description: "Built a C#/.NET LLM logging API with Azure Cosmos DB and an Android APK pipeline using Docker, OpenJDK, and Azure storage/queues. Implemented Azure Functions and Semantic Kernel for prompt workflows, parsing, and metadata extraction.",
     logo: "/logos/koderAI.png",
     is_exp: "https://koder.com/",
   },
