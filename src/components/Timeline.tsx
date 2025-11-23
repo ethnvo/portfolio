@@ -192,7 +192,7 @@ const Timeline = () => {
                       }
                     `}
                 >
-                  {entry.in_dev && (
+                  {entry.active && (
                     <span
                       className="
                         px-3

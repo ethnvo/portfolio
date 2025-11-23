@@ -5,37 +5,38 @@ export type timeline = {
   date: string;
   description: string;
   logo: string;
-  in_dev: boolean;
+  active: boolean;
   is_exp: string | null;
 };
 
 export const timelineData: timeline[] = [
   {
     title: "Software Engineer Intern @ koderAI",
-    in_dev: true,
+    active: false,
     extra: null,
     location: "Irvine, CA",
     date: "June 2025 - Sept 2025",
-    description: "Built a C#/.NET LLM logging API with Azure Cosmos DB and an Android APK pipeline using Docker, OpenJDK, and Azure storage/queues. Implemented Azure Functions and Semantic Kernel for prompt workflows, parsing, and metadata extraction.",
+    description:
+      "Built a C#/.NET LLM logging API with Azure Cosmos DB and an Android APK pipeline using Docker, OpenJDK, and Azure storage/queues. Implemented Azure Functions and Semantic Kernel for prompt workflows, parsing, and metadata extraction.",
     logo: "/logos/koderAI.png",
     is_exp: "https://koder.com/",
   },
 
   {
     title: "Co-Founder & Fullstack Lead @ Plus1 (React Native)",
-    in_dev: true,
+    active: true,
     extra: null,
     location: "Irvine, CA",
     date: "June 2025",
     description:
-      "Actively leading the rebuild of Plus1 - a spontaneous event planning app for students - using React Native. Managing development, product vision, and a refreshed team structure to bring it to launch.",
+      "Actively leading the rebuild of Plus1 - a spontaneous event planning mobile app for students - using React Native. Managing development, product vision, and a refreshed team structure to bring it to launch.",
     is_exp: null,
     logo: "/logos/neoplus1.svg",
   },
   {
     title: "Fullstack Developer & System Architect @ auther.",
     extra: "🏆 Best Female Empowerment",
-    in_dev: false,
+    active: false,
     is_exp: null,
     location: "VenusHacks",
     date: "May 2025",
@@ -44,7 +45,7 @@ export const timelineData: timeline[] = [
     logo: "/logos/auther500.png",
   },
   {
-    in_dev: false,
+    active: false,
     is_exp: null,
     title: "Backend Developer & System Architect @ AWSpeak",
     extra: "Top 5 Finalist",
@@ -57,7 +58,7 @@ export const timelineData: timeline[] = [
   {
     title: "Fullstack Engineer @ Plus1 (Flutter)",
     extra: null,
-    in_dev: false,
+    active: false,
     is_exp: null,
     location: "LAHacks",
     date: "April 2025",
@@ -70,7 +71,7 @@ export const timelineData: timeline[] = [
     extra: null,
     location: "BitHacks",
     date: "April 2025",
-    in_dev: false,
+    active: false,
     is_exp: null,
     description:
       "Prototyped an automatic pet feeder using ESP-32 with C/C++, integrating real-time hardware control and a simple UI for timed feeding under tight constraints.",
