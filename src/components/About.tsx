@@ -44,7 +44,7 @@ const About = () => {
         {/* Image wrapper */}
         <div className="flex justify-center md:justify-start">
           <img
-            src="profileimg2.jpg"
+            src="headshot.png"
             alt="Profile Picture of Ethan Vo"
             className="
               w-48
