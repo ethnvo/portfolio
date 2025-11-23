@@ -248,7 +248,9 @@ const About = () => {
             </a>
 
             <a
-              href="mailto:ekvo@uci.edu"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=ekvo@uci.edu"
+              target="_blank"
+              rel="noopener noreferrer"
               className="
                 px-6
                 py-3
