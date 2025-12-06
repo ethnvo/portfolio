@@ -22,7 +22,7 @@ function App() {
     absolute
     inset-0
     blur-[120px]
-    bg-[radial-gradient(ellipse_80%_80%_at_50%_100%,#ffc371_0%,#ff5f6d_25%,#6a85f1_55%,transparent_100%)]
+    bg-[radial-gradient(ellipse_80%_80%_at_50%_110%,#ffc371_15%,#ff5f6d_5%,#6a85f1_65%,transparent_90%)]
   "
         />
       </div>
@@ -32,7 +32,7 @@ function App() {
       <Timeline />
       <Projects />
       <footer className="text-center text-sm text-white py-10">
-        © 2025 Ethan Vo. Built with React & TailwindCSS.
+        © 2026 Ethan Vo. Built with React & TailwindCSS.
       </footer>
     </div>
   );

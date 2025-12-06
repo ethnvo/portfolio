@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import {
   BiLogoGithub,
-  BiLogoInstagram,
+  BiLogoInstagram, //legacy stub
   BiLogoLinkedin,
-  BiLogoTiktok,
+  BiLogoTiktok, //legacy stub
 } from "react-icons/bi";
 
 const About = () => {
