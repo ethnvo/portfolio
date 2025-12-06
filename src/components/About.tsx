@@ -166,48 +166,6 @@ const About = () => {
               "
               />
             </a>
-
-            <a
-              href="https://www.instagram.com/ethyvo/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BiLogoInstagram
-                className="
-                text-2xl
-                md:text-3xl
-                text-white
-                cursor-pointer
-                transition-all
-                duration-300
-                ease-in-out
-                hover:scale-125
-                hover:rotate-6
-                hover:text-[#e1306c]
-              "
-              />
-            </a>
-
-            <a
-              href="https://www.tiktok.com/@lockinethan/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BiLogoTiktok
-                className="
-                text-2xl
-                md:text-3xl
-                text-white
-                cursor-pointer
-                transition-all
-                duration-300
-                ease-in-out
-                hover:scale-125
-                hover:rotate-6
-                hover:text-black
-              "
-              />
-            </a>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
