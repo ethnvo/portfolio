@@ -22,7 +22,7 @@ function App() {
     absolute
     inset-0
     blur-[120px]
-    bg-[radial-gradient(ellipse_80%_80%_at_50%_110%,#ffc371_15%,#ff5f6d_5%,#6a85f1_65%,transparent_90%)]
+    bg-[radial-gradient(ellipse_80%_80%_at_50%_125%,#ffc371_15%,#ff5f6d_5%,#6a85f1_65%,transparent_30%)]
   "
         />
       </div>

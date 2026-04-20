@@ -170,7 +170,7 @@ const About = () => {
 
           <div className="flex flex-col sm:flex-row gap-4">
             <a
-              href="/Resume_Ethan_Vo_2025.pdf"
+              href="/Ethan Vo Resume F.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="
