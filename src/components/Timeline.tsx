@@ -113,7 +113,7 @@ const Timeline = () => {
               shadow-black/40
               hover:border-brand/40
               hover:shadow-brand/10
-                transition-all
+                transition-[border-color,box-shadow] duration-300
                 /* Center on mobile */
                 mx-auto
                 text-center
