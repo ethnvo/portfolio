@@ -54,7 +54,7 @@ const About = () => {
               rounded-full  /* keep as a circle */
               object-cover
               hover:shadow-2xl
-              hover:shadow-pink-500
+              hover:shadow-brand/40
               hover:scale-105
               hover:rotate-2
               transition-all
@@ -64,33 +64,16 @@ const About = () => {
         </div>
 
         {/* Text block */}
-        <div className="flex flex-col items-center gap-4 md:items-start md:pl-12">
-          <span
-            className="
-            px-2
-            py-1
-            text-white
-            bg-zinc-800
-            rounded-full
-            text-xs
-            md:text-sm
-          "
-          >
-            Open to Work
-          </span>
-
+        <div className="flex flex-1 flex-col items-center gap-4 md:items-start md:pl-12">
           <h1
             className="
-            text-4xl
-            md:text-5xl
-            lg:text-6xl
+            font-display
+            text-5xl
+            md:text-6xl
+            lg:text-7xl
             font-semibold
-            bg-gradient-to-b
-            from-blue-500
-            via-pink-300
-            to-orange-200
-            text-transparent
-            bg-clip-text
+            tracking-tight
+            text-ink
           "
           >
             Ethan Vo
@@ -101,21 +84,16 @@ const About = () => {
             text-lg
             md:text-xl
             lg:text-2xl
-            font-light
-            bg-gradient-to-b
-            from-blue-500
-            via-pink-300
-            to-orange-200
-            text-transparent
-            bg-clip-text
+            font-medium
+            text-brand
           "
           >
-            Fullstack Engineer
+            Fullstack &amp; Mobile Engineer
           </h2>
 
-          <p className="text-sm text-white font-light max-w-md">
-            Hi! I’m Ethan Vo, a third-year Business Information Management and
-            Software Engineering major at UC Irvine.
+          <p className="text-sm text-ink-soft font-light max-w-2xl leading-relaxed">
+            Hi! I’m Ethan Vo, a fourth-year Software Engineering major at UC
+            Irvine.
             <br />
             <br />I thrive in high-pressure positions, whether it be leading
             project teams, competing in hackathons or directing my own startups.
@@ -141,7 +119,7 @@ const About = () => {
                 ease-in-out
                 hover:scale-125
                 hover:rotate-6
-                hover:text-[#02040A]
+                hover:text-brand
               "
               />
             </a>
@@ -174,35 +152,26 @@ const About = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="
-              inline-block
-              bg-gradient-to-t
-              to-rose-500
-              via-purple-400
-              from-rose-500
-              bg-[length:400%_400%]
-              bg-[position:0%_10%]
-              hover:bg-[position:50%_100%]
-              p-[2px]
-              rounded-lg
-              transition-[background-position]
-              duration-500
-              ease-in-out
-            "
-            >
-              <div
-                className="
-                backdrop-blur-md
-                text-white
-                drop-shadow-md
+                inline-flex
+                items-center
+                justify-center
                 px-6
                 py-3
-                rounded-lg
+                rounded-full
+                bg-brand
+                text-white
                 text-base
-                font-medium
+                font-semibold
+                lowercase
+                tracking-wide
+                hover:bg-white
+                hover:text-brand
+                hover:scale-[1.04]
+                transition-all
+                duration-300
               "
-              >
-                Explore my CV
-              </div>
+            >
+              explore my cv
             </a>
 
             <a
@@ -210,21 +179,27 @@ const About = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="
+                inline-flex
+                items-center
+                justify-center
                 px-6
                 py-3
+                rounded-full
                 border
-                border-pink-300
-                text-pink-300
-                rounded-lg
-                hover:bg-pink-600
-                hover:border-transparent
-                hover:text-white
-                transition-all
+                border-brand/50
+                text-brand
                 text-base
-                font-medium
+                font-semibold
+                lowercase
+                tracking-wide
+                hover:bg-brand
+                hover:border-brand
+                hover:text-white
+                transition-colors
+                duration-300
               "
             >
-              Contact Me
+              contact me
             </a>
           </div>
         </div>

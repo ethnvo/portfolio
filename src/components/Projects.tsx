@@ -12,13 +12,12 @@ const Projects = () => {
   return (
     <div
       id="projects"
-      className="w-full py-16 bg-transparent text-white mt-[80px] sm:mt-[200px]"
+      className="w-full py-16 bg-transparent text-white mt-8 sm:mt-16"
     >
       <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8">
         <h2
-          className="leading-tight text-4xl sm:text-5xl font-medium text-center
-             text-transparent bg-clip-text 
-             bg-gradient-to-b from-blue-500 via-pink-300 to-orange-200
+          className="font-display leading-tight text-4xl sm:text-5xl font-semibold tracking-tight text-center
+             text-ink
              mb-12 sm:mb-16 pb-1"
         >
           Featured Projects
@@ -34,12 +33,12 @@ const Projects = () => {
             const baseClasses = `
               flex-shrink-0 
               w-full sm:w-[calc(50%-1.25rem)] md:w-[calc(33.333%-1.25rem)] lg:w-[calc(33.333%-1.25rem)] xl:w-[350px]
-              p-6 rounded-2xl shadow-xl 
-              flex flex-col items-center 
-              border border-pink-500
-              bg-black/20 
-              
-              hover:shadow-blue-400/30 hover:border-blue-300 transition-all duration-300 ease-out
+              p-6 rounded-2xl shadow-xl shadow-black/40
+              flex flex-col items-center
+              border border-white/[0.08]
+              bg-surface
+
+              hover:shadow-brand/10 hover:border-brand/40 transition-all duration-300 ease-out
             `;
 
             // Initial (not visible): translate to right and opacity 0
@@ -64,7 +63,7 @@ const Projects = () => {
                   ${delayClass}
                 `}
               >
-                <h3 className="text-xl sm:text-2xl font-semibold text-white mb-4 text-center">
+                <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink mb-4 text-center">
                   {project.title}
                 </h3>
 
@@ -107,7 +106,7 @@ const Projects = () => {
                   })}
                 </div>
 
-                <p className="text-white text-sm font-light text-center leading-relaxed flex-grow">
+                <p className="text-ink-soft text-sm font-light text-center leading-relaxed flex-grow">
                   {project.description}
                 </p>
               </a>

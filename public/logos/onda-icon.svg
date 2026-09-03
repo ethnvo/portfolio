@@ -1,0 +1,28 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ondaPink" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F758A2"/>
+      <stop offset="0.5" stop-color="#F03E8C"/>
+      <stop offset="1" stop-color="#C5286B"/>
+    </linearGradient>
+    <linearGradient id="ondaDome" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <!-- Canonical Onda bubble (SF1), body x:24..266 y:30..198 -->
+    <path id="ondaBubble" d="M 90,30 L 200,30 A 66,66 0 0 1 266,96 L 266,124 A 52,52 0 0 1 236,170 C 245,177 251,187 251,198 C 247,191 228,184 200,176 L 90,176 A 66,66 0 0 1 24,110 L 24,96 A 66,66 0 0 1 90,30 Z"/>
+    <clipPath id="ondaClip"><use href="#ondaBubble"/></clipPath>
+  </defs>
+
+  <!-- ground -->
+  <rect width="1024" height="1024" rx="228" fill="#080B09"/>
+
+  <!-- bubble: canonical body (24..266, 30..198) scaled & centered on 1024 canvas -->
+  <g transform="translate(121,204) scale(2.7)">
+    <use href="#ondaBubble" fill="url(#ondaPink)"/>
+    <g clip-path="url(#ondaClip)">
+      <path d="M 30,62 C 30,36 84,24 145,24 C 206,24 260,36 260,62 C 260,98 206,112 145,112 C 84,112 30,98 30,62 Z" fill="url(#ondaDome)"/>
+    </g>
+    <text x="142" y="120" fill="#FFFFFF" font-family="-apple-system, 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="60" font-weight="600" text-anchor="middle" letter-spacing="-1">onda</text>
+  </g>
+</svg>

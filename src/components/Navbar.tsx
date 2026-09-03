@@ -5,13 +5,13 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 w-full backdrop-blur-md bg-black/40 border-b border-gray-700 border-opacity-20 z-50">
-      <nav className="max-w-7xl mx-auto px-5 py-4 lg:px-32 flex items-center justify-between text-white">
+    <header className="fixed top-0 w-full bg-ground/85 backdrop-blur-sm border-b border-white/[0.08] z-50">
+      <nav className="max-w-7xl mx-auto px-5 py-4 lg:px-32 flex items-center justify-between text-ink">
         <a
           href="#about"
-          className="text-xl md:text-2xl font-semibold bg-gradient-to-r  from-[#708EEA] via-pink-400 to-orange-200 text-transparent bg-clip-text hover:scale-110 transition-all duration-300"
+          className="font-display text-xl md:text-2xl font-semibold tracking-tight text-ink hover:text-brand transition-colors duration-300"
         >
-          Ethan Vo
+          ethanvo.dev
         </a>
 
         <ul className="hidden md:flex gap-10">
@@ -34,7 +34,7 @@ const Navbar = () => {
         </button>
 
         {isMenuOpen && (
-          <ul className="md:hidden absolute top-16 left-0 w-full bg-black/90 border-t border-gray-800 py-16 text-center space-y-5 overflow-x-hidden">
+          <ul className="md:hidden absolute top-16 left-0 w-full bg-ground/95 border-t border-white/[0.08] py-16 text-center space-y-5 overflow-x-hidden">
             <li className="px-10 opacity-80 hover:opacity-100 transition-opacity">
               <a href="#about" onClick={() => setIsMenuOpen(false)}>
                 <span className="text-lg">About</span>

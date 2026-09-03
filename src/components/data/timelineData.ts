@@ -11,6 +11,39 @@ export type timeline = {
 
 export const timelineData: timeline[] = [
   {
+    title: "Software Development Engineer Intern @ Amazon",
+    active: true,
+    extra: null,
+    location: "Culver City, CA",
+    date: "Sept 2026 - Dec 2026",
+    description:
+      "Building platform services for Amazon Music (Podcasts), working across the systems that power podcast playback and discovery at scale.",
+    logo: "/logos/amazon.jpeg",
+    is_exp: "https://www.amazon.jobs/",
+  },
+  {
+    title: "Founder @ onda",
+    active: true,
+    extra: null,
+    location: "Irvine, CA",
+    date: "March 2026 - Current",
+    description:
+      "Leading a 9-person engineering team building onda (the ground-up rebuild of Plus1) - a cross-platform social event logistics app in React Native and Expo. Real-time, map-based discovery, coordination, and management of hosted events, designed for low-friction, spontaneous meetups.",
+    logo: "/logos/onda-icon.svg",
+    is_exp: null,
+  },
+  {
+    title: "Software Engineer Intern @ Equus Compute Solutions",
+    active: false,
+    extra: null,
+    location: "Industry, CA",
+    date: "June 2026 - Sept 2026",
+    description:
+      "Built a concurrent Go pipeline normalizing hardware-inventory logs into JSON Lines across 3 formats with a worker-pool / single-writer, crash-safe design at 5000+ machine scale. Shipped 6 hardware benchmarks with Prometheus thermal monitoring into a RabbitMQ extractor/analyzer pipeline for automated pass/fail validation.",
+    logo: "/logos/equus.jpeg",
+    is_exp: null,
+  },
+  {
     title: "Software Engineer Intern @ koderAI",
     active: false,
     extra: null,
@@ -20,18 +53,6 @@ export const timelineData: timeline[] = [
       "Built a C#/.NET LLM logging API with Azure Cosmos DB and an Android APK pipeline using Docker, OpenJDK, and Azure storage/queues. Implemented Azure Functions and Semantic Kernel for prompt workflows, parsing, and metadata extraction.",
     logo: "/logos/koderAI.png",
     is_exp: "https://koder.com/",
-  },
-
-  {
-    title: "Co-Founder & Fullstack Lead @ Plus1 (React Native)",
-    active: true,
-    extra: null,
-    location: "Irvine, CA",
-    date: "June 2025",
-    description:
-      "Actively leading the rebuild of Plus1 - a spontaneous event planning mobile app for students - using React Native. Managing development, product vision, and a refreshed team structure to bring it to launch.",
-    is_exp: null,
-    logo: "/logos/neoplus1.svg",
   },
   {
     title: "Fullstack Developer & System Architect @ auther.",

@@ -2,12 +2,12 @@ import { timelineData } from "./data/timelineData";
 import { motion } from "framer-motion";
 
 const borderColors = [
-  "border-orange-300",
-  "border-[#FEDBD3]",
-  "border-[#FD9998]",
-  "border-[#FB8791]",
-  "border-rose-400",
-  "border-pink-500",
+  "border-brand/60",
+  "border-white/20",
+  "border-wave/50",
+  "border-brand/40",
+  "border-live/40",
+  "border-white/15",
 ];
 
 const Timeline = () => {
@@ -20,7 +20,7 @@ const Timeline = () => {
         sm:py-10
         sm:px-6
         lg:px-8
-        mb-40
+        mb-20
       "
       id="timeline"
     >
@@ -33,18 +33,15 @@ const Timeline = () => {
         {/* Responsive heading spacing */}
         <h2
           className="
-          text-transparent
-          bg-gradient-to-b
-          bg-clip-text
-          from-blue-500
-          via-pink-300
-          to-orange-200
+          font-display
+          text-ink
           text-5xl
           text-center
           mt-10
           mb-20
           sm:mb-[100px]
-          sm:font-medium
+          font-semibold
+          tracking-tight
         "
         >
           Timeline
@@ -62,12 +59,12 @@ const Timeline = () => {
     before:absolute
     before:left-1/2
     before:top-0
-    before:w-1
+    before:w-px
     before:h-full
     before:bg-gradient-to-b
-    before:from-orange-200
-    before:via-rose-400
-    before:to-pink-500
+    before:from-white/[0.06]
+    before:via-brand/30
+    before:to-white/[0.06]
     before:-translate-x-1/2
   "
       >
@@ -92,18 +89,18 @@ const Timeline = () => {
                 p-4
                 sm:p-6
 
-                /* Blurred, translucent background */
-                bg-black/20
-                backdrop-blur-sm
+                /* Matte surface — onda house style (no blur) */
+                bg-surface
 
                 rounded-2xl
                 shadow-lg
                 overflow-visible
                 flex
                 flex-col
-                border border-transparent    
-              shadow-pink-200/20
-              hover:shadow-blue-400/50
+                border border-white/[0.08]
+              shadow-black/40
+              hover:border-brand/40
+              hover:shadow-brand/10
                 transition-all
                 /* Center on mobile */
                 mx-auto
@@ -153,16 +150,11 @@ const Timeline = () => {
                 <h2
                   className="
                       truncate
+                      font-display
                       text-lg
                       sm:text-xl
-                      font-medium
-                      text-transparent
-                      bg-clip-text
-                      bg-gradient-to-b
-                      from-rose-400
-                      via-pink-300
-                      to-orange-300
-
+                      font-semibold
+                      text-ink
                     "
                 >
                   {entry.title}
@@ -195,21 +187,23 @@ const Timeline = () => {
                   {entry.active && (
                     <span
                       className="
+                        inline-flex
+                        items-center
+                        gap-1.5
                         px-3
                         py-1
                         rounded-full
                         text-xs
                         sm:text-sm
-                        border border-orange-400
-                        bg-orange-400/10
-                        text-yellow-100
-                        shadow-sm
-                        backdrop-blur-sm
+                        border border-live/40
+                        bg-live/10
+                        text-live
                         font-medium
                         tracking-wide
                       "
                     >
-                      🔥 Active
+                      <span className="h-1.5 w-1.5 rounded-full bg-live" />
+                      active
                     </span>
                   )}
 
@@ -219,12 +213,12 @@ const Timeline = () => {
                           px-3
                           py-1
                           border
-                          border-yellow-400
-                          bg-yellow-400/10
+                          border-gold/40
+                          bg-gold/10
                           rounded-full
                           text-xs
                           sm:text-sm
-                          text-white
+                          text-gold
                         "
                     >
                       {entry.extra}
@@ -236,12 +230,12 @@ const Timeline = () => {
                           px-3
                           py-1
                           border
-                          border-blue-400
-                          bg-blue-400/10
+                          border-wave/40
+                          bg-wave/10
                           rounded-full
                           text-xs
                           sm:text-sm
-                          text-white
+                          text-wave
                         "
                     >
                       📍 {entry.location}
@@ -251,18 +245,19 @@ const Timeline = () => {
                     className="
                         px-3
                         py-1
-                        bg-gray-400/20
+                        border border-white/10
+                        bg-white/[0.04]
                         rounded-full
                         text-xs
                         sm:text-sm
-                        text-white
+                        text-ink-soft
                       "
                   >
                     {entry.date}
                   </span>
                 </div>
                 <p
-                  className={`mt-3 text-xs sm:text-base text-white ${
+                  className={`mt-3 text-xs sm:text-base text-ink-soft leading-relaxed ${
                     i % 2 === 0 ? "sm:ml-3 sm:mr-0" : "sm:mr-3 sm:ml-0"
                   }`}
                   style={{ fontWeight: "350" }}

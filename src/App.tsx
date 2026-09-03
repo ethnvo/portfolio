@@ -1,38 +1,42 @@
+import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import About from "./components/About";
 import Timeline from "./components/Timeline";
 import Projects from "./components/Projects";
+import Banner from "./components/Banner";
+
+// Tiny hash router: only #banner is special (hidden tool); every other
+// hash (#about, #timeline, #projects) renders the portfolio and lets the
+// browser scroll to the anchor as usual.
+function useHash() {
+  const [hash, setHash] = useState(() => window.location.hash);
+  useEffect(() => {
+    const onHash = () => setHash(window.location.hash);
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
+  return hash;
+}
 
 function App() {
-  return (
-    <div className="relative min-h-screen overflow-x-hidden">
-      <div className="fixed inset-0 -z-20 bg-black" />
+  const hash = useHash();
+  if (hash === "#banner") return <Banner />;
 
-      <div
-        className="
-    fixed
-    inset-0
-    -z-10
-    overflow-hidden
-    pointer-events-none
-  "
-      >
-        <div
-          className="
-    absolute
-    inset-0
-    blur-[120px]
-    bg-[radial-gradient(ellipse_80%_80%_at_50%_125%,#ffc371_15%,#ff5f6d_5%,#6a85f1_65%,transparent_30%)]
-  "
-        />
-      </div>
-      <div className="fixed inset-0 z-0 bg-[url('/clean-gray-paper.png')] bg-repeat opacity-[0.12] pointer-events-none" />
+  return (
+    <div className="relative min-h-screen overflow-x-hidden bg-ground text-ink">
+      {/* Subtle dot grid — matte, no glow */}
+      <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:24px_24px]" />
+      {/* Vignette for depth toward the edges */}
+      <div className="fixed inset-0 z-0 bg-[radial-gradient(ellipse_at_center,transparent_60%,rgba(0,0,0,0.5)_100%)] pointer-events-none" />
+
       <Navbar />
-      <About />
-      <Timeline />
-      <Projects />
-      <footer className="text-center text-sm text-white py-10">
-        © 2026 Ethan Vo. Built with React & TailwindCSS.
+      <main className="relative z-10">
+        <About />
+        <Timeline />
+        <Projects />
+      </main>
+      <footer className="relative z-10 text-center text-sm text-ink-muted py-10">
+        © 2026 Ethan Vo · built with react &amp; tailwind
       </footer>
     </div>
   );
