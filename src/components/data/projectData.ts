@@ -8,6 +8,7 @@ import {
   BiLogoTailwindCss,
   BiLogoFlutter,
   BiLogoFirebase,
+  BiLogoCPlusPlus,
 } from "react-icons/bi";
 import { IconType } from "react-icons";
 
@@ -23,12 +24,16 @@ const AWSCOLOR = "#FF9900";
 const FLUTTERCOLOR = "#5FC8F8";
 const DARTCOLOR = "#2CB7F6";
 const FIREBASECOLOR = "#FF9100";
+const CPPCOLOR = "#00599C";
+const ESPCOLOR = "#E7352C";
 
 export type Project = {
   title: string;
   logo: string;
   link: string;
   description: string;
+  event?: string; // hackathon + year
+  award?: string; // placement, if any
   technologies?: string[]; // optional for now
   colors: (string | null)[];
   techlogos?: (IconType | null)[]; // optional too
@@ -36,19 +41,11 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "Plus1 (React Native)",
-    logo: "/logos/neoplus1.svg",
-    link: "https://devpost.com/software/plus1-ypledt",
-    colors: [REACTCOLOR, DARTCOLOR, FIREBASECOLOR],
-    technologies: ["React Native", "TypeScript", "Google Firebase"],
-    techlogos: [BiLogoReact, BiLogoTypescript, BiLogoFirebase],
-    description:
-      "What started as a Flutter MVP at LAHacks 2025 has been completely reimagined with a new team and sharper vision. Plus1 lets students casually find or create real-time meetups like study sessions or lunch hangouts. Designed for low-commitment, instant connection with minimal UI friction. We focused on speed, simplicity, and real-time updates - making social planning feel natural, not overwhelming.",
-  },
-  {
     title: "auther.",
     logo: "/logos/auther500.png",
     link: "https://devpost.com/software/auther",
+    event: "VenusHacks 2025",
+    award: "🏆 1st · Best Female Empowerment",
     colors: [
       REACTCOLOR,
       null,
@@ -74,12 +71,14 @@ export const projects: Project[] = [
       BiLogoTailwindCss,
     ],
     description:
-      "Putting women-led research front and center, auther. aims to provide users access to verified female authors through an intuitive platform that amplifies voices that are often overlooked.",
+      "Puts women-led research front and center with an intuitive platform surfacing verified female authors and amplifying often-overlooked voices.",
   },
   {
     title: "AWSpeak",
     logo: "/logos/awspeak.jpeg",
     link: "https://devpost.com/software/awspeak",
+    event: "AWS CloudHacks 2025",
+    award: "Top 5 Finalist",
     colors: [
       REACTCOLOR,
       null,
@@ -108,16 +107,28 @@ export const projects: Project[] = [
       BiLogoTailwindCss,
     ],
     description:
-      "AWSpeak provides hyper-realistic, AI-powered mock interviews simulating Amazon's leadership principles. Users get voice-driven sessions tailored to specific job descriptions, followed by detailed feedback and downloadable transcripts.",
+      "AI-powered mock interviews modeled on Amazon's leadership principles. Voice-driven sessions tailored to a job description, with detailed feedback and downloadable transcripts.",
   },
   {
     title: "Plus1 (Flutter MVP)",
     logo: "/logos/plus1.svg",
     link: "https://devpost.com/software/plus1-ypledt",
+    event: "LAHacks 2025",
     colors: [FLUTTERCOLOR, DARTCOLOR, FIREBASECOLOR],
     technologies: ["Flutter", "Dart", "Google Firebase"],
     techlogos: [BiLogoFlutter, DartIcon, BiLogoFirebase],
     description:
-      "Plus1 lets students casually find or create real-time meetups like study sessions or lunch hangouts. Designed for low-commitment, instant connection with minimal UI friction. We focused on speed, simplicity, and real-time updates - making social planning feel natural, not overwhelming.",
+      "The original LAHacks MVP: students find or create real-time meetups like study sessions or lunch hangouts. Low-commitment, low-friction, instant connection.",
+  },
+  {
+    title: "AutoFeeder",
+    logo: "/logos/bithacks.png",
+    link: "",
+    event: "BitHacks 2025",
+    colors: [ESPCOLOR, CPPCOLOR],
+    technologies: ["ESP-32", "C/C++"],
+    techlogos: [null, BiLogoCPlusPlus],
+    description:
+      "An automatic pet feeder prototyped on ESP-32 (C/C++) with real-time hardware control and a simple timed-feeding UI, built under tight hackathon constraints.",
   },
 ];

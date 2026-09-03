@@ -9,6 +9,8 @@ export type timeline = {
   is_exp: string | null;
 };
 
+// Experience only — hackathons live in their own section (see projectData.ts).
+// Active (ongoing) roles come first so the "Now" cluster groups them at the top.
 export const timelineData: timeline[] = [
   {
     title: "Software Development Engineer Intern @ Amazon",
@@ -17,7 +19,7 @@ export const timelineData: timeline[] = [
     location: "Culver City, CA",
     date: "Sept 2026 - Dec 2026",
     description:
-      "Building platform services for Amazon Music (Podcasts), working across the systems that power podcast playback and discovery at scale.",
+      "Building platform services for Amazon Music (Podcasts), the systems behind podcast playback and discovery at scale.",
     logo: "/logos/amazon.jpeg",
     is_exp: "https://www.amazon.jobs/",
   },
@@ -28,7 +30,7 @@ export const timelineData: timeline[] = [
     location: "Irvine, CA",
     date: "March 2026 - Current",
     description:
-      "Leading a 9-person engineering team building onda (the ground-up rebuild of Plus1) - a cross-platform social event logistics app in React Native and Expo. Real-time, map-based discovery, coordination, and management of hosted events, designed for low-friction, spontaneous meetups.",
+      "Leading a 9-person team building onda (the rebuild of Plus1): a React Native + Expo app for real-time, map-based discovery and coordination of spontaneous meetups.",
     logo: "/logos/onda-icon.svg",
     is_exp: null,
   },
@@ -39,7 +41,7 @@ export const timelineData: timeline[] = [
     location: "Industry, CA",
     date: "June 2026 - Sept 2026",
     description:
-      "Built a concurrent Go pipeline normalizing hardware-inventory logs into JSON Lines across 3 formats with a worker-pool / single-writer, crash-safe design at 5000+ machine scale. Shipped 6 hardware benchmarks with Prometheus thermal monitoring into a RabbitMQ extractor/analyzer pipeline for automated pass/fail validation.",
+      "Built a crash-safe concurrent Go pipeline (worker-pool / single-writer) normalizing hardware logs to JSON Lines across 3 formats at 5000+ machine scale. Shipped 6 benchmarks with Prometheus thermal monitoring into a RabbitMQ pass/fail pipeline.",
     logo: "/logos/equus.jpeg",
     is_exp: null,
   },
@@ -50,52 +52,8 @@ export const timelineData: timeline[] = [
     location: "Irvine, CA",
     date: "June 2025 - Sept 2025",
     description:
-      "Built a C#/.NET LLM logging API with Azure Cosmos DB and an Android APK pipeline using Docker, OpenJDK, and Azure storage/queues. Implemented Azure Functions and Semantic Kernel for prompt workflows, parsing, and metadata extraction.",
+      "Built a C#/.NET LLM logging API on Azure Cosmos DB and a Dockerized Android build pipeline on Azure queues. Added Azure Functions + Semantic Kernel for prompt workflows and metadata extraction.",
     logo: "/logos/koderAI.png",
     is_exp: "https://koder.com/",
-  },
-  {
-    title: "Fullstack Developer & System Architect @ auther.",
-    extra: "🏆 Best Female Empowerment",
-    active: false,
-    is_exp: null,
-    location: "VenusHacks",
-    date: "May 2025",
-    description:
-      "Earned 1st Place for building a socially impactful platform promoting women-led academia. Recognized by UCI’s Department of Computer Science for addressing gender bias through verified research metadata.",
-    logo: "/logos/auther500.png",
-  },
-  {
-    active: false,
-    is_exp: null,
-    title: "Backend Developer & System Architect @ AWSpeak",
-    extra: "Top 5 Finalist",
-    location: "AWS Cloudhacks",
-    date: "May 2025",
-    description:
-      "Built an AI-powered voice interview platform in 36 hours using AWS Bedrock, Transcribe, and Flask. Delivered full backend + audio pipeline and presented to Amazon engineers. ",
-    logo: "/logos/awspeak.jpeg",
-  },
-  {
-    title: "Fullstack Engineer @ Plus1 (Flutter)",
-    extra: null,
-    active: false,
-    is_exp: null,
-    location: "LAHacks",
-    date: "April 2025",
-    description:
-      "Created a spontaneous event planning app for students using Flutter and Firebase. Designed cross-platform mobile UI, integrated Firebase Auth, and led project vision.",
-    logo: "/logos/plus1.svg",
-  },
-  {
-    title: "Embedded Software Engineer @ AutoFeeder",
-    extra: null,
-    location: "BitHacks",
-    date: "April 2025",
-    active: false,
-    is_exp: null,
-    description:
-      "Prototyped an automatic pet feeder using ESP-32 with C/C++, integrating real-time hardware control and a simple UI for timed feeding under tight constraints.",
-    logo: "/logos/bithacks.png",
   },
 ];

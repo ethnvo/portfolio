@@ -22,7 +22,7 @@ const Navbar = () => {
             <a href="#timeline">Timeline</a>
           </li>
           <li className="opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-300">
-            <a href="#projects">Projects</a>
+            <a href="#hackathons">Hackathons</a>
           </li>
         </ul>
 
@@ -46,8 +46,8 @@ const Navbar = () => {
               </a>
             </li>
             <li className="px-10 opacity-80 hover:opacity-100 transition-opacity">
-              <a href="#projects" onClick={() => setIsMenuOpen(false)}>
-                <span className="text-lg">Projects</span>
+              <a href="#hackathons" onClick={() => setIsMenuOpen(false)}>
+                <span className="text-lg">Hackathons</span>
               </a>
             </li>
           </ul>

@@ -11,16 +11,16 @@ const Projects = () => {
 
   return (
     <div
-      id="projects"
+      id="hackathons"
       className="w-full py-16 bg-transparent text-white mt-8 sm:mt-16"
     >
       <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8">
         <h2
           className="font-display leading-tight text-4xl sm:text-5xl font-semibold tracking-tight text-center
              text-ink
-             mb-12 sm:mb-16 pb-1"
+             mb-12 sm:mb-16"
         >
-          Featured Projects
+          Hackathons
         </h2>
 
         {/* Container for the cards. The ref is used to detect when this container is in view */}
@@ -41,31 +41,41 @@ const Projects = () => {
               hover:shadow-brand/10 hover:border-brand/40 transition-all duration-300 ease-out
             `;
 
-            // Initial (not visible): translate to right and opacity 0
-            // When visible: translate-x-0 and opacity 100
+            // Subtle fade-up when the grid scrolls into view
             const animationClasses = isVisible
-              ? "opacity-100 translate-x-0"
-              : "opacity-0 translate-x-full";
-
-            // Stagger delay using Tailwind's delay utilities
-            const delayClass = `delay-${idx * 150}`;
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-8";
 
             return (
               <a
                 key={idx}
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={project.link || undefined}
+                target={project.link ? "_blank" : undefined}
+                rel={project.link ? "noopener noreferrer" : undefined}
+                style={{ transitionDelay: `${idx * 110}ms` }}
                 className={`
                   ${baseClasses}
+                  ${project.link ? "cursor-pointer" : "cursor-default"}
                   ${animationClasses}
-                  transition-all duration-700 ease-out
-                  ${delayClass}
+                  transition-all duration-500 ease-out
                 `}
               >
-                <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink mb-4 text-center">
+                <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink mb-2 text-center">
                   {project.title}
                 </h3>
+
+                <div className="flex flex-wrap gap-2 items-center justify-center mb-4">
+                  {project.award && (
+                    <span className="px-3 py-1 rounded-full text-xs sm:text-sm border border-gold/40 bg-gold/10 text-gold">
+                      {project.award}
+                    </span>
+                  )}
+                  {project.event && (
+                    <span className="px-3 py-1 rounded-full text-xs sm:text-sm border border-white/10 bg-white/[0.04] text-ink-soft">
+                      {project.event}
+                    </span>
+                  )}
+                </div>
 
                 <div className="w-full aspect-[16/10] inline-flex items-center justify-center rounded-xl p-1 mb-4 overflow-hidden group">
                   <img
@@ -84,7 +94,6 @@ const Projects = () => {
                 <div className="flex flex-wrap gap-2 items-center justify-center mb-4">
                   {project.technologies?.map((label, i2) => {
                     const IconComponent = project.techlogos?.[i2];
-                    if (!IconComponent) return null;
                     const badgeColor =
                       project.colors?.[i2 % project.colors.length] ?? "#718096";
                     return (
@@ -96,10 +105,12 @@ const Projects = () => {
                           boxShadow: `0 0 5px -1px ${badgeColor}60`,
                         }}
                       >
-                        <IconComponent
-                          size={16}
-                          style={{ color: badgeColor }}
-                        />
+                        {IconComponent && (
+                          <IconComponent
+                            size={16}
+                            style={{ color: badgeColor }}
+                          />
+                        )}
                         <span>{label}</span>
                       </span>
                     );

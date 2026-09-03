@@ -95,10 +95,9 @@ const About = () => {
             Hi! I’m Ethan Vo, a fourth-year Software Engineering major at UC
             Irvine.
             <br />
-            <br />I thrive in high-pressure positions, whether it be leading
-            project teams, competing in hackathons or directing my own startups.
-            I'm always looking to level up my skills not only as a Software
-            Developer, but also as a leader and a founder who turns ideas into
+            <br />I thrive under pressure, whether I'm leading teams, competing
+            in hackathons, or building startups. Always trying to reach the next
+            level as an engineer, a leader, and a founder who turns ideas into
             impact.
           </p>
 

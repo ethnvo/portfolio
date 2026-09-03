@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { timelineData } from "./data/timelineData";
 import { motion } from "framer-motion";
 
@@ -25,10 +26,10 @@ const Timeline = () => {
       id="timeline"
     >
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.4, delay: 0.1 }}
+        viewport={{ once: true, amount: 0.6 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
         {/* Responsive heading spacing */}
         <h2
@@ -68,20 +69,31 @@ const Timeline = () => {
     before:-translate-x-1/2
   "
       >
-        {timelineData.map((entry, i) => (
+        {/* "Now" node groups the ongoing roles at the top */}
+        <div className="relative z-10 pb-24 flex justify-center">
+          <span className="inline-flex items-center gap-1.5 px-4 py-1 rounded-full text-xs sm:text-sm bg-ground border border-live/50 text-live font-semibold tracking-wide">
+            <span className="h-1.5 w-1.5 rounded-full bg-live" />
+            Now
+          </span>
+        </div>
+
+        {timelineData.map((entry, i) => {
+          const startsEarlier =
+            !entry.active && (i === 0 || timelineData[i - 1].active);
+          return (
+          <Fragment key={i}>
+            {startsEarlier && (
+              <div className="relative z-10 pt-6 pb-24 flex justify-center">
+                <span className="px-4 py-1 rounded-full text-xs sm:text-sm bg-ground border border-white/15 text-ink-muted tracking-wide">
+                  Earlier
+                </span>
+              </div>
+            )}
           <motion.div
-            key={i}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={{
-              hidden: { opacity: 0, y: 50 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { delay: i * 0.1 },
-              },
-            }}
+            initial={{ opacity: 0, x: i % 2 === 0 ? 48 : -48 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className={`
                 relative
                 w-full
@@ -142,8 +154,8 @@ const Timeline = () => {
   `}
             />
             <a
-              href={entry.is_exp ? entry.is_exp : "#projects"}
-              target={entry.is_exp ? "_blank" : "_self"}
+              href={entry.is_exp || undefined}
+              target={entry.is_exp ? "_blank" : undefined}
               rel={entry.is_exp ? "noopener noreferrer" : undefined}
             >
               <div className="">
@@ -203,7 +215,7 @@ const Timeline = () => {
                       "
                     >
                       <span className="h-1.5 w-1.5 rounded-full bg-live" />
-                      active
+                      Active
                     </span>
                   )}
 
@@ -267,7 +279,9 @@ const Timeline = () => {
               </div>
             </a>
           </motion.div>
-        ))}
+          </Fragment>
+          );
+        })}
       </div>
     </div>
   );
