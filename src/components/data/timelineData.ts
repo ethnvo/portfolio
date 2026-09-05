@@ -35,7 +35,7 @@ export const timelineData: timeline[] = [
     is_exp: null,
   },
   {
-    title: "Software Engineer Intern @ Equus Compute Solutions",
+    title: "SWE Intern @ Equus Compute Solutions",
     active: false,
     extra: null,
     location: "Industry, CA",
@@ -46,7 +46,7 @@ export const timelineData: timeline[] = [
     is_exp: null,
   },
   {
-    title: "Software Engineer Intern @ koderAI",
+    title: "SWE Intern @ koderAI",
     active: false,
     extra: null,
     location: "Irvine, CA",
