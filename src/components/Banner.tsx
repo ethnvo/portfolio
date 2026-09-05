@@ -2,13 +2,14 @@ import { toPng } from "html-to-image";
 import download from "downloadjs";
 
 // Hidden LinkedIn banner generator. Reachable at /#banner.
-// Renders a 1584x500 banner and exports it as a PNG.
+// Renders a 1584x396 (LinkedIn cover ratio) banner and exports it as a PNG.
+// Bottom-left is intentionally left clear for the profile photo overlap.
 const Banner = () => {
   const exportBanner = () => {
     const node = document.getElementById("banner");
     if (!node) return;
 
-    toPng(node, { quality: 0.95, pixelRatio: 1 })
+    toPng(node, { quality: 0.95, pixelRatio: 2 })
       .then((dataUrl) => {
         download(dataUrl, "ethanvo-banner.png");
       })
@@ -18,46 +19,30 @@ const Banner = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#080B09] flex flex-col items-center justify-center gap-8 py-16 overflow-auto">
+    <div className="min-h-screen w-full bg-ground flex flex-col items-center justify-center gap-8 py-16 overflow-auto">
       <div className="w-full overflow-auto flex justify-center">
         <div
           id="banner"
           className="
-            w-[1584px] min-h-[500px] shrink-0
-            flex flex-col items-start justify-center
-            pr-10 text-white relative
-            bg-ground
-            overflow-visible
+            relative w-[1584px] h-[396px] shrink-0
+            overflow-hidden text-white bg-ground
           "
         >
-          {/* Faint matte texture — same as the site */}
-          <div className="absolute inset-0 bg-[url('/clean-gray-paper.png')] bg-repeat opacity-[0.03] z-0 pointer-events-none" />
+          {/* Dot grid — same language as the site */}
+          <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:26px_26px] pointer-events-none" />
 
-          {/* Content Block */}
-          <div className="pl-[600px] pr-[50px] overflow-visible">
-            {/* Wordmark */}
-            <div className="relative w-fit mb-[10px]">
-              <span
-                className="
-                  relative text-[180px] font-light tracking-tighter font-display
-                  text-[#F9FAFB] z-10
-                "
-              >
-                ethanvo.dev<span className="opacity-0">.</span>
-              </span>
-            </div>
+          {/* Concentric ring outlines drifting off the right edge — calm, modern */}
+          <div className="absolute right-[-260px] top-1/2 -translate-y-1/2 h-[760px] w-[760px] rounded-full border border-white/[0.05] pointer-events-none" />
+          <div className="absolute right-[-160px] top-1/2 -translate-y-1/2 h-[560px] w-[560px] rounded-full border border-white/[0.07] pointer-events-none" />
+          <div className="absolute right-[-70px] top-1/2 -translate-y-1/2 h-[380px] w-[380px] rounded-full border border-brand/20 pointer-events-none" />
 
-            {/* Tagline */}
-            <p
-              className="
-                font-display
-                text-[2.4rem] font-medium
-                text-right mr-[52px] mb-[30px]
-                -mt-8
-                text-brand tracking-tight
-              "
-            >
-              let's get pumpin'
+          {/* Wordmark block — right-weighted, left stays clear for the avatar */}
+          <div className="absolute right-[110px] top-1/2 -translate-y-1/2 text-right">
+            <h1 className="font-display text-[124px] leading-none font-medium tracking-tight text-ink">
+              ethanvo.dev
+            </h1>
+            <p className="mt-5 text-[26px] font-light tracking-wide text-ink-soft lowercase">
+              fullstack &amp; mobile engineer
             </p>
           </div>
         </div>
@@ -66,7 +51,7 @@ const Banner = () => {
       {/* Export Button */}
       <button
         onClick={exportBanner}
-        className="px-6 py-3 rounded-full bg-[#F03E8C] text-white font-semibold lowercase tracking-wide hover:bg-[#C5286B] transition-colors"
+        className="px-6 py-3 rounded-full bg-brand text-white font-semibold lowercase tracking-wide hover:bg-brand-dark transition-colors"
       >
         download as png
       </button>
