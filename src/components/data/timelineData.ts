@@ -13,14 +13,14 @@ export type timeline = {
 // Active (ongoing) roles come first so the "Now" cluster groups them at the top.
 export const timelineData: timeline[] = [
   {
-    title: "Software Development Engineer Intern @ Amazon",
+    title: "SDE Intern @ Amazon Music",
     active: true,
     extra: null,
     location: "Culver City, CA",
     date: "Sept 2026 - Dec 2026",
     description:
       "Building platform services for Amazon Music (Podcasts), the systems behind podcast playback and discovery at scale.",
-    logo: "/logos/amazon.jpeg",
+    logo: "/logos/amazon-music.png",
     is_exp: "https://www.amazon.jobs/",
   },
   {
