@@ -32,9 +32,9 @@ const Banner = () => {
           <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:26px_26px] pointer-events-none" />
 
           {/* Concentric ring outlines drifting off the right edge — calm, modern */}
-          <div className="absolute right-[-440px] top-1/2 -translate-y-1/2 h-[760px] w-[760px] rounded-full border border-white/[0.07] pointer-events-none" />
-          <div className="absolute right-[-320px] top-1/2 -translate-y-1/2 h-[560px] w-[560px] rounded-full border border-white/[0.11] pointer-events-none" />
-          <div className="absolute right-[-210px] top-1/2 -translate-y-1/2 h-[380px] w-[380px] rounded-full border border-brand/30 pointer-events-none" />
+          <div className="absolute right-[-540px] top-1/2 -translate-y-1/2 h-[940px] w-[940px] rounded-full border-2 border-white/[0.07] pointer-events-none" />
+          <div className="absolute right-[-370px] top-1/2 -translate-y-1/2 h-[640px] w-[640px] rounded-full border-2 border-white/[0.12] pointer-events-none" />
+          <div className="absolute right-[-220px] top-1/2 -translate-y-1/2 h-[380px] w-[380px] rounded-full border-2 border-brand/35 pointer-events-none" />
 
           {/* Wordmark block — right-weighted, left stays clear for the avatar */}
           <div className="absolute right-[110px] top-1/2 -translate-y-1/2 text-right">
