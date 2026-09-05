@@ -34,7 +34,7 @@ const Navbar = () => {
         </button>
 
         {isMenuOpen && (
-          <ul className="md:hidden absolute top-16 left-0 w-full bg-ground/95 border-t border-white/[0.08] py-16 text-center space-y-5 overflow-x-hidden">
+          <ul className="md:hidden absolute top-16 left-0 w-full bg-ground border-b border-white/[0.08] shadow-xl shadow-black/50 py-12 text-center space-y-5 overflow-x-hidden">
             <li className="px-10 opacity-80 hover:opacity-100 transition-opacity">
               <a href="#about" onClick={() => setIsMenuOpen(false)}>
                 <span className="text-lg">About</span>
