@@ -161,7 +161,6 @@ const Timeline = () => {
               <div className="">
                 <h2
                   className="
-                      truncate
                       font-display
                       text-lg
                       sm:text-xl
