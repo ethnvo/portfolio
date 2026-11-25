@@ -38,6 +38,8 @@
    footer: the teaser's sky in light, ink in dark. --frame is the opening
    (nav and "i'm ethan"), --calm is the page under it; they are separate roles
    so the page can differ from the opening, and today they match.
+   --bench is the ground the banner tool lays its artwork on. The artwork is
+   sky, so the bench never is, or the picture's edges could not be seen.
    index.html sets data-theme before first paint. */
 :root {
   color-scheme: light;
@@ -45,6 +47,7 @@
   --on-frame: #080b09;
   --calm: #8ee0f0;
   --on-calm: #080b09;
+  --bench: #f9fafb;
   --soft: rgba(8, 11, 9, 0.62);
   --rule: #080b09;
   --edge: #080b09;
@@ -62,6 +65,7 @@
   --on-frame: #f9fafb;
   --calm: #080b09;
   --on-calm: #f9fafb;
+  --bench: #080b09;
   --soft: #b0b8c4;
   --rule: rgba(255, 255, 255, 0.16);
   --edge: rgba(255, 255, 255, 0.2);
@@ -181,24 +185,29 @@ html {
       0 0.125rem 0 var(--on-frame);
   }
 
-  /* Text links: a thick underline that turns pink under the pointer */
+  /* Text links: a thick underline that turns pink under the pointer. It is
+     never thinner than two pixels: at three-quarter size it would otherwise
+     round down to a hairline on an ordinary screen. */
   .link {
+    position: relative;
     padding-bottom: 0.1875rem;
-    border-bottom: 0.15625rem solid currentColor;
+    border-bottom: max(0.15625rem, 2px) solid currentColor;
     font-weight: 700;
     transition: border-color 0.12s ease;
   }
   .nav-link {
     position: relative;
     padding-bottom: 0.1875rem;
-    border-bottom: 0.15625rem solid transparent;
+    border-bottom: max(0.15625rem, 2px) solid transparent;
     transition: border-color 0.12s ease;
   }
-  /* The words are small; the area that takes a tap is not. */
+  /* The words are small; the area that takes a tap is not: 40px tall or
+     more at either page size. */
+  .link::after,
   .nav-link::after {
     content: "";
     position: absolute;
-    inset: -0.75rem -0.25rem;
+    inset: -0.875rem -0.25rem;
   }
   .link:hover,
   .nav-link:hover {

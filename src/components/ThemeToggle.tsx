@@ -33,7 +33,9 @@ const Sun = () => (
 
 type Props = { theme: Theme; onToggle: () => void };
 
-// The `after:` box widens the area that takes a tap without growing the button.
+// The `after:` disc widens the area that takes a tap without growing the
+// button. It is round because the button turns under the pointer: a square
+// one would swing its corners out from under it and flicker.
 const ThemeToggle = ({ theme, onToggle }: Props) => {
   const next = theme === "dark" ? "light" : "dark";
 
@@ -43,7 +45,7 @@ const ThemeToggle = ({ theme, onToggle }: Props) => {
       onClick={onToggle}
       aria-label={`switch to ${next} mode`}
       title={`switch to ${next} mode`}
-      className="relative grid h-8 w-8 shrink-0 place-items-center rounded-full shadow-[inset_0_0_0_0.15625rem_currentColor] transition-transform duration-150 after:absolute after:-inset-2 after:content-[''] hover:rotate-12 active:scale-90 motion-reduce:transition-none md:h-9 md:w-9"
+      className="relative grid h-8 w-8 shrink-0 place-items-center rounded-full shadow-[inset_0_0_0_0.15625rem_currentColor] transition-transform duration-150 after:absolute after:-inset-2 after:rounded-full after:content-[''] hover:rotate-12 active:scale-90 motion-reduce:transition-none md:h-9 md:w-9"
     >
       {theme === "dark" ? <Sun /> : <Moon />}
     </button>

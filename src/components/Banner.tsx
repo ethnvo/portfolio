@@ -1,9 +1,6 @@
 import { useState } from "react";
-import { toPng } from "html-to-image";
+import { getFontEmbedCSS, toPng } from "html-to-image";
 import download from "downloadjs";
-
-// The typeface the banner is drawn in, at the size of its biggest word.
-const TYPEFACE = '700 392px "Allo"';
 
 // The picture itself never changes: LinkedIn's cover size, the teaser's sky
 // and ink. These are set on the element, not through the theme, so the
@@ -14,6 +11,23 @@ const ARTWORK = {
   backgroundColor: "#8EE0F0",
   color: "#080B09",
 };
+
+// The font file inside the Allo rule the image library is about to draw
+// with. Null when the rule is missing, or when the library could not fetch
+// the file: it leaves the address empty and carries on.
+const alloFile = (embedCSS: string) =>
+  embedCSS
+    .split("@font-face")
+    .find((rule) => /font-family:\s*["']?Allo["']?\s*;/.test(rule))
+    ?.match(/url\(["']?(data:[^"')]+)/)?.[1] ?? null;
+
+// Whether those bytes are a font the browser can draw with. A server's error
+// page is fetched without complaint too.
+const isWorkingFont = (file: string) =>
+  new FontFace("Allo proof", `url("${file}")`).load().then(
+    () => true,
+    () => false
+  );
 
 // Hidden LinkedIn banner generator. Reachable at /#banner.
 // Draws the cover in the onda teaser look (flat sky frame, a small "i'm"
@@ -27,23 +41,26 @@ const Banner = () => {
     if (!node) return;
     setProblem(null);
 
-    // Without Allo the picture would be drawn in a stand-in typeface, and
-    // look fine at a glance. Ask for it, then make sure it really arrived.
-    const fonts = document.fonts;
-    if (fonts) {
-      await fonts.load(TYPEFACE).catch(() => {});
-      if (!fonts.check(TYPEFACE)) {
+    try {
+      // The picture is not drawn from the Allo this page is showing. The
+      // image library fetches its own copy now, and when that fails it draws
+      // in a stand-in typeface without a word, which looks fine at a glance.
+      // So: take the copy first, make sure it is a working font, and have
+      // the picture drawn with that very copy. The library remembers a
+      // failed fetch until the page is reloaded, hence the advice.
+      const fontEmbedCSS = await getFontEmbedCSS(node);
+      const file = alloFile(fontEmbedCSS);
+      if (!file || !(await isWorkingFont(file))) {
         setProblem(
           "the typeface didn't load, so the banner would come out wrong. reload the page and try again."
         );
         return;
       }
-    }
 
-    try {
       const dataUrl = await toPng(node, {
         quality: 0.95,
         pixelRatio: 2,
+        fontEmbedCSS,
         // The page centres the banner with a margin. Left in, the picture
         // would carry that margin and shift the artwork to the right.
         style: { margin: "0" },
@@ -56,7 +73,7 @@ const Banner = () => {
   };
 
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-center gap-8 bg-calm py-16 text-on-calm">
+    <div className="flex min-h-screen w-full flex-col items-center justify-center gap-8 bg-bench py-16 text-on-calm">
       <div className="w-full overflow-x-auto">
         <div
           id="banner"

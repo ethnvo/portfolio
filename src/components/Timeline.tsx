@@ -48,7 +48,7 @@ const Timeline = () => (
                 {entry.extra}
               </p>
             )}
-            <p className="mt-3 max-w-[60ch] text-pretty text-[1.03125rem] font-medium leading-normal md:text-lg md:leading-7">
+            <p className="mt-3 max-w-[60ch] text-pretty text-[1.03125rem] font-medium leading-normal md:text-lg md:leading-[1.5556]">
               {entry.description}
             </p>
           </div>

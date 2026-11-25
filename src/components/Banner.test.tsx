@@ -1,6 +1,6 @@
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { toPng } from "html-to-image";
+import { getFontEmbedCSS, toPng } from "html-to-image";
 import download from "downloadjs";
 import Banner from "./Banner";
 
@@ -8,18 +8,41 @@ import Banner from "./Banner";
 // at their boundary. The real export is checked in a browser.
 vi.mock("html-to-image", () => ({
   toPng: vi.fn(() => Promise.resolve("data:image/png;base64,AAAA")),
+  getFontEmbedCSS: vi.fn(),
 }));
 vi.mock("downloadjs", () => ({ default: vi.fn() }));
 
-// The browser's font list. `loaded` says whether Allo made it.
-function fonts(loaded: boolean) {
-  const list = {
-    load: vi.fn(() => Promise.resolve([])),
-    check: vi.fn(() => loaded),
-  };
-  Object.defineProperty(document, "fonts", { configurable: true, value: list });
-  return list;
+// What the image library hands back for the typeface: the page's Allo rule
+// with the font file folded into it. When it cannot fetch the file it leaves
+// the address empty and carries on.
+const FILE = "data:font/woff2;base64,d09GMgABAAAA";
+const alloRule = (file: string) =>
+  `@font-face { font-family: Allo; src: url("${file}") format("woff2"); font-weight: 400 700; font-style: normal; font-display: swap; }`;
+
+// The browser's font decoder, which jsdom lacks. `sound` says whether the
+// bytes it is given are a working font. Returns what it was asked to decode.
+function decoder(sound: boolean) {
+  const asked: string[] = [];
+  vi.stubGlobal(
+    "FontFace",
+    class {
+      constructor(_family: string, source: string) {
+        asked.push(source);
+      }
+      load() {
+        return sound
+          ? Promise.resolve(this)
+          : Promise.reject(new Error("not a font"));
+      }
+    }
+  );
+  return asked;
 }
+
+beforeEach(() => {
+  vi.mocked(getFontEmbedCSS).mockResolvedValue(alloRule(FILE));
+  decoder(true);
+});
 
 const press = () =>
   fireEvent.click(screen.getByRole("button", { name: "download as png" }));
@@ -78,27 +101,6 @@ describe("the banner", () => {
     );
   });
 
-  it("asks for the typeface before drawing", async () => {
-    const list = fonts(true);
-    render(<Banner />);
-    press();
-    await waitFor(() => expect(download).toHaveBeenCalled());
-    expect(list.load).toHaveBeenCalledWith(expect.stringContaining("Allo"));
-    expect(list.load.mock.invocationCallOrder[0]).toBeLessThan(
-      vi.mocked(toPng).mock.invocationCallOrder[0]
-    );
-    expect(screen.queryByRole("alert")).toBeNull();
-  });
-
-  it("refuses to hand over a banner in the wrong typeface", async () => {
-    fonts(false);
-    render(<Banner />);
-    press();
-    expect((await screen.findByRole("alert")).textContent).toMatch(/typeface/);
-    expect(toPng).not.toHaveBeenCalled();
-    expect(download).not.toHaveBeenCalled();
-  });
-
   it("says so when the picture cannot be made, and recovers on the next try", async () => {
     vi.spyOn(console, "error").mockImplementation(() => {});
     vi.mocked(toPng).mockRejectedValueOnce(new Error("canvas is tainted"));
@@ -112,5 +114,52 @@ describe("the banner", () => {
     press();
     await waitFor(() => expect(download).toHaveBeenCalled());
     expect(screen.queryByRole("alert")).toBeNull();
+  });
+});
+
+// The picture is not drawn from the typeface the page is showing. The image
+// library fetches its own copy at export time, and when that goes wrong it
+// draws in a stand-in typeface without a word.
+describe("the banner's typeface", () => {
+  it("is checked, and the picture is drawn with the very copy that passed", async () => {
+    const asked = decoder(true);
+    render(<Banner />);
+    press();
+    await waitFor(() => expect(download).toHaveBeenCalled());
+
+    const banner = document.getElementById("banner");
+    expect(getFontEmbedCSS).toHaveBeenCalledWith(banner);
+    expect(asked).toEqual([`url("${FILE}")`]);
+    expect(toPng).toHaveBeenCalledWith(
+      banner,
+      expect.objectContaining({ fontEmbedCSS: alloRule(FILE) })
+    );
+    expect(screen.queryByRole("alert")).toBeNull();
+  });
+
+  it.each([
+    ["the typeface could not be fetched", alloRule("")],
+    ["the picture would carry no typeface at all", ""],
+    [
+      "the only typeface it carries is another one",
+      alloRule(FILE).replace("Allo", '"Allo Fallback"'),
+    ],
+  ])("stops the export when %s", async (_why, css) => {
+    vi.mocked(getFontEmbedCSS).mockResolvedValue(css);
+    render(<Banner />);
+    press();
+    expect((await screen.findByRole("alert")).textContent).toMatch(/typeface/);
+    expect(toPng).not.toHaveBeenCalled();
+    expect(download).not.toHaveBeenCalled();
+  });
+
+  // A server error page comes back as bytes too, and they are not a font.
+  it("stops the export when what was fetched is not a working font", async () => {
+    decoder(false);
+    render(<Banner />);
+    press();
+    expect((await screen.findByRole("alert")).textContent).toMatch(/typeface/);
+    expect(toPng).not.toHaveBeenCalled();
+    expect(download).not.toHaveBeenCalled();
   });
 });

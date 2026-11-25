@@ -4,12 +4,10 @@ import About from "./components/About";
 import Timeline from "./components/Timeline";
 import Projects from "./components/Projects";
 import Banner from "./components/Banner";
-import { useTheme } from "./theme";
+import { useTheme, type Theme } from "./theme";
 
 // Tiny hash router: only #banner is special (hidden tool); every other
 // hash (#about, #timeline, #projects) renders the portfolio.
-const BANNER = "#banner";
-
 function useHash() {
   const [hash, setHash] = useState(() => window.location.hash);
   useEffect(() => {
@@ -24,22 +22,18 @@ function useHash() {
 const gutter = "px-5 md:px-[6vw]";
 const column = "mx-auto max-w-[79.25rem]";
 
-function App() {
-  const hash = useHash();
-  const [theme, toggleTheme] = useTheme();
+type SiteProps = { theme: Theme; onToggleTheme: () => void };
 
+// The portfolio itself.
+function Site({ theme, onToggleTheme }: SiteProps) {
   // A link straight to a section (ethanvo.dev/#projects) arrives before the
   // page is drawn, so the browser finds nothing to scroll to. Finish the job
-  // once. Later clicks on the nav scroll on their own.
+  // when the page appears. Later clicks on the nav scroll on their own.
   useEffect(() => {
-    const section = window.location.hash.slice(1);
-    if (!section || window.location.hash === BANNER) return;
     document
-      .getElementById(section)
+      .getElementById(window.location.hash.slice(1))
       ?.scrollIntoView({ behavior: "instant" });
   }, []);
-
-  if (hash === BANNER) return <Banner />;
 
   return (
     <div className="min-h-screen bg-calm text-on-calm">
@@ -48,7 +42,7 @@ function App() {
         className={`bg-frame pt-5 text-on-frame md:pt-[1.625rem] ${gutter}`}
       >
         <div className={column}>
-          <Navbar theme={theme} onToggleTheme={toggleTheme} />
+          <Navbar theme={theme} onToggleTheme={onToggleTheme} />
         </div>
       </header>
 
@@ -89,6 +83,14 @@ function App() {
       </footer>
     </div>
   );
+}
+
+function App() {
+  const hash = useHash();
+  const [theme, toggleTheme] = useTheme();
+
+  if (hash === "#banner") return <Banner />;
+  return <Site theme={theme} onToggleTheme={toggleTheme} />;
 }
 
 export default App;

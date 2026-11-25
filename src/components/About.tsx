@@ -14,7 +14,10 @@ const About = () => (
         fullstack &amp; mobile engineer
       </p>
 
-      <div className="mt-3.5 max-w-[36em] space-y-3.5 text-pretty text-[1.03125rem] font-medium leading-normal md:text-lg md:leading-7">
+      {/* Body text, here and in the timeline and projects: on desktop the
+          line height is a ratio (28px lines on 18px text), not a length, so
+          text a reader has enlarged keeps its line spacing. */}
+      <div className="mt-3.5 max-w-[36em] space-y-3.5 text-pretty text-[1.03125rem] font-medium leading-normal md:text-lg md:leading-[1.5556]">
         <p>
           Hi! I&apos;m Ethan Vo, a fourth-year Software Engineering major at UC
           Irvine.

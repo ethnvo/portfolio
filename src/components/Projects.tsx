@@ -19,7 +19,7 @@ const Tile = ({ project }: { project: Project }) => (
         {project.event}
       </p>
     )}
-    <p className="mt-3 max-w-[60ch] text-pretty text-[1.03125rem] font-medium leading-normal md:text-lg md:leading-7">
+    <p className="mt-3 max-w-[60ch] text-pretty text-[1.03125rem] font-medium leading-normal md:text-lg md:leading-[1.5556]">
       {project.description}
     </p>
     <p className="mt-3 text-[0.9375rem] font-bold lowercase leading-[1.4] text-soft md:text-[1rem]">

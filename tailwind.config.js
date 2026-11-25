@@ -18,6 +18,7 @@ export default {
         "on-frame": "var(--on-frame)",
         calm: "var(--calm)",
         "on-calm": "var(--on-calm)",
+        bench: "var(--bench)",
         soft: "var(--soft)",
         rule: "var(--rule)",
       },

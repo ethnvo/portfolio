@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { act, render, screen, within } from "@testing-library/react";
 import App from "./App";
 
@@ -234,37 +234,50 @@ describe("the hidden banner tool", () => {
 // The page is drawn after it loads, so the browser has nothing to scroll to
 // when a link names a section. The app finishes the job.
 describe("a link straight to a section", () => {
+  // Watches where the page is told to scroll: `seen` holds the sections.
   const landings = () => {
     const seen: string[] = [];
-    Element.prototype.scrollIntoView = function (this: Element) {
-      seen.push(this.id);
-    };
-    return seen;
+    const scroll = vi
+      .spyOn(Element.prototype, "scrollIntoView")
+      .mockImplementation(function (this: Element) {
+        seen.push(this.id);
+      });
+    return { seen, scroll };
   };
-  afterEach(() => {
-    // jsdom has no scrollIntoView of its own
-    delete (Element.prototype as { scrollIntoView?: unknown }).scrollIntoView;
-  });
 
-  it("lands on that section", () => {
-    const seen = landings();
+  // The page scrolls smoothly on a click. Arriving is not a click: the
+  // reader should start at the section, not watch the page travel to it.
+  it("lands on that section at once", () => {
+    const { seen, scroll } = landings();
     window.location.hash = "#projects";
     render(<App />);
     expect(seen).toEqual(["projects"]);
+    expect(scroll).toHaveBeenCalledWith({ behavior: "instant" });
   });
 
   it("stays put on a plain visit", () => {
-    const seen = landings();
+    const { seen } = landings();
     render(<App />);
     expect(seen).toEqual([]);
   });
 
   it("leaves the banner tool and unknown names alone", () => {
-    const seen = landings();
+    const { seen } = landings();
     window.location.hash = "#banner";
     render(<App />).unmount();
     window.location.hash = "#nowhere";
     render(<App />);
     expect(seen).toEqual([]);
+  });
+
+  it("lands on the section when the banner tool gives way to the site", () => {
+    const { seen } = landings();
+    window.location.hash = "#banner";
+    render(<App />);
+    act(() => {
+      window.location.hash = "#projects";
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
+    });
+    expect(seen).toEqual(["projects"]);
   });
 });
