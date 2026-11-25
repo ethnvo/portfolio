@@ -1,8 +1,12 @@
-import { useTheme } from "../theme";
+import type { Theme } from "../theme";
 
 // The icon shows where the switch takes you: a moon in light mode, a sun in dark.
 const Moon = () => (
-  <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" aria-hidden="true">
+  <svg
+    viewBox="0 0 24 24"
+    className="h-[1.125rem] w-[1.125rem]"
+    aria-hidden="true"
+  >
     <path
       fill="currentColor"
       d="M20.6 14.3A8.7 8.7 0 0 1 9.7 3.4a8.7 8.7 0 1 0 10.9 10.9Z"
@@ -11,7 +15,11 @@ const Moon = () => (
 );
 
 const Sun = () => (
-  <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" aria-hidden="true">
+  <svg
+    viewBox="0 0 24 24"
+    className="h-[1.125rem] w-[1.125rem]"
+    aria-hidden="true"
+  >
     <circle cx="12" cy="12" r="4.6" fill="currentColor" />
     <path
       fill="none"
@@ -23,17 +31,19 @@ const Sun = () => (
   </svg>
 );
 
-const ThemeToggle = () => {
-  const [theme, toggle] = useTheme();
+type Props = { theme: Theme; onToggle: () => void };
+
+// The `after:` box widens the area that takes a tap without growing the button.
+const ThemeToggle = ({ theme, onToggle }: Props) => {
   const next = theme === "dark" ? "light" : "dark";
 
   return (
     <button
       type="button"
-      onClick={toggle}
+      onClick={onToggle}
       aria-label={`switch to ${next} mode`}
       title={`switch to ${next} mode`}
-      className="grid h-9 w-9 shrink-0 place-items-center rounded-full shadow-[inset_0_0_0_2.5px_currentColor] transition-transform duration-150 hover:rotate-12 active:scale-90 motion-reduce:transition-none"
+      className="relative grid h-8 w-8 shrink-0 place-items-center rounded-full shadow-[inset_0_0_0_0.15625rem_currentColor] transition-transform duration-150 after:absolute after:-inset-2 after:content-[''] hover:rotate-12 active:scale-90 motion-reduce:transition-none md:h-9 md:w-9"
     >
       {theme === "dark" ? <Sun /> : <Moon />}
     </button>

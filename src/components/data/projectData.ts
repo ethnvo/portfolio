@@ -21,7 +21,7 @@ export const projects: Project[] = [
       "Typescript",
       "Django",
       "Python",
-      "Tailwind",
+      "TailwindCSS",
     ],
     description:
       "Puts women-led research front and center with an intuitive platform surfacing verified female authors and amplifying often-overlooked voices.",
@@ -37,9 +37,9 @@ export const projects: Project[] = [
       "Next.js",
       "Typescript",
       "Flask",
-      "AWS",
+      "Amazon Web Services",
       "Python",
-      "Tailwind",
+      "TailwindCSS",
     ],
     description:
       "AI-powered mock interviews modeled on Amazon's leadership principles. Voice-driven sessions tailored to a job description, with detailed feedback and downloadable transcripts.",
@@ -49,7 +49,7 @@ export const projects: Project[] = [
     logo: "/logos/plus1.svg",
     link: "https://devpost.com/software/plus1-ypledt",
     event: "LAHacks 2025",
-    technologies: ["Flutter", "Dart", "Firebase"],
+    technologies: ["Flutter", "Dart", "Google Firebase"],
     description:
       "The original LAHacks MVP: students find or create real-time meetups like study sessions or lunch hangouts. Low-commitment, low-friction, instant connection.",
   },

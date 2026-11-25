@@ -12,23 +12,38 @@
   font-display: swap;
 }
 
-/* Arial resized to Allo's proportions, so the page does not jump when Allo arrives. */
+/* Arial resized to Allo's proportions, so the page barely moves when Allo
+   arrives. Allo is drawn wider at small sizes, so each face is matched where
+   it is used most: body copy for regular, the nav and buttons for bold. */
 @font-face {
   font-family: "Allo Fallback";
   src: local("Arial");
-  size-adjust: 107.12%;
-  ascent-override: 90.44%;
-  descent-override: 22.52%;
+  font-weight: 400;
+  size-adjust: 105.9%;
+  ascent-override: 91.48%;
+  descent-override: 22.78%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Allo Fallback";
+  src: local("Arial Bold"), local("Arial-BoldMT");
+  font-weight: 700;
+  size-adjust: 101%;
+  ascent-override: 95.92%;
+  descent-override: 23.88%;
   line-gap-override: 0%;
 }
 
-/* Theme roles. Light is the teaser's sky frame over a calm ice page.
-   Dark is ink all the way down. index.html sets data-theme before first paint. */
+/* Theme roles. Each theme is one flat colour from the top of the page to the
+   footer: the teaser's sky in light, ink in dark. --frame is the opening
+   (nav and "i'm ethan"), --calm is the page under it; they are separate roles
+   so the page can differ from the opening, and today they match.
+   index.html sets data-theme before first paint. */
 :root {
   color-scheme: light;
   --frame: #8ee0f0;
   --on-frame: #080b09;
-  --calm: #d3e3ee;
+  --calm: #8ee0f0;
   --on-calm: #080b09;
   --soft: rgba(8, 11, 9, 0.62);
   --rule: #080b09;
@@ -58,10 +73,19 @@
   --now-line: rgba(0, 230, 118, 0.5);
 }
 
+/* The size of everything. Every length in the design is in rem (or vw), so
+   this one number scales the whole page: full size on phones, three quarters
+   from tablet width up, where full size reads as zoomed in. */
 html {
+  font-size: 100%;
   background: var(--frame);
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 75%;
+  }
 }
 
 ::selection {
@@ -113,53 +137,68 @@ html {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 54px;
-    padding: 0 26px 1px;
+    height: 3.375rem;
+    padding: 0 1.625rem 0.0625rem;
     border-radius: 9999px;
-    font-size: 17px;
+    font-size: 1.0625rem;
     font-weight: 700;
     line-height: 1;
     white-space: nowrap;
     transition: transform 0.12s ease, box-shadow 0.12s ease;
   }
   .btn:hover {
-    transform: translateY(-2px);
+    transform: translateY(-0.125rem);
   }
   .btn:active {
-    transform: translateY(4px);
+    transform: translateY(0.25rem);
   }
   .btn-solid {
     background: var(--on-frame);
     color: var(--btn-on);
-    box-shadow: 0 6px 0 var(--lip);
+    box-shadow: 0 0.375rem 0 var(--lip);
   }
   .btn-solid:hover {
-    box-shadow: 0 8px 0 var(--lip);
+    box-shadow: 0 0.5rem 0 var(--lip);
   }
   .btn-solid:active {
-    box-shadow: 0 2px 0 var(--lip);
+    box-shadow: 0 0.125rem 0 var(--lip);
+  }
+  /* The focus ring takes the text colour, and this button's text is the
+     colour of the page behind it. Draw its ring in the page's text colour. */
+  .btn-solid:focus-visible {
+    outline-color: var(--on-frame);
   }
   .btn-line {
-    box-shadow: inset 0 0 0 3px var(--on-frame), 0 6px 0 var(--on-frame);
+    box-shadow: inset 0 0 0 0.1875rem var(--on-frame),
+      0 0.375rem 0 var(--on-frame);
   }
   .btn-line:hover {
-    box-shadow: inset 0 0 0 3px var(--on-frame), 0 8px 0 var(--on-frame);
+    box-shadow: inset 0 0 0 0.1875rem var(--on-frame),
+      0 0.5rem 0 var(--on-frame);
   }
   .btn-line:active {
-    box-shadow: inset 0 0 0 3px var(--on-frame), 0 2px 0 var(--on-frame);
+    box-shadow: inset 0 0 0 0.1875rem var(--on-frame),
+      0 0.125rem 0 var(--on-frame);
   }
 
   /* Text links: a thick underline that turns pink under the pointer */
   .link {
-    padding-bottom: 3px;
-    border-bottom: 2.5px solid currentColor;
+    padding-bottom: 0.1875rem;
+    border-bottom: 0.15625rem solid currentColor;
     font-weight: 700;
     transition: border-color 0.12s ease;
   }
   .nav-link {
-    padding-bottom: 3px;
-    border-bottom: 2.5px solid transparent;
+    position: relative;
+    padding-bottom: 0.1875rem;
+    border-bottom: 0.15625rem solid transparent;
     transition: border-color 0.12s ease;
+  }
+  /* The words are small; the area that takes a tap is not. */
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    inset: -0.75rem -0.25rem;
   }
   .link:hover,
   .nav-link:hover {
@@ -169,42 +208,42 @@ html {
   /* Stickers: an outline and a hard shadow underneath, no blur */
   .sticker {
     background: #fff;
-    box-shadow: 0 0 0 3px var(--edge), 0 6px 0 2px var(--edge);
+    box-shadow: 0 0 0 0.1875rem var(--edge), 0 0.375rem 0 0.125rem var(--edge);
   }
   .shot {
     background: #fff;
-    box-shadow: 0 0 0 3px var(--edge), 0 8px 0 2px var(--edge);
+    box-shadow: 0 0 0 0.1875rem var(--edge), 0 0.5rem 0 0.125rem var(--edge);
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
   .tile:hover .shot {
-    transform: translateY(-3px);
-    box-shadow: 0 0 0 3px var(--edge), 0 11px 0 2px var(--edge);
+    transform: translateY(-0.1875rem);
+    box-shadow: 0 0 0 0.1875rem var(--edge), 0 0.6875rem 0 0.125rem var(--edge);
   }
   .tile:active .shot {
-    transform: translateY(4px);
-    box-shadow: 0 0 0 3px var(--edge), 0 4px 0 2px var(--edge);
+    transform: translateY(0.25rem);
+    box-shadow: 0 0 0 0.1875rem var(--edge), 0 0.25rem 0 0.125rem var(--edge);
   }
   .award {
     position: absolute;
-    left: -12px;
-    top: -18px;
-    padding: 8px 15px 9px;
+    left: -0.75rem;
+    top: -1.125rem;
+    padding: 0.5rem 0.9375rem 0.5625rem;
     border-radius: 9999px;
     background: #ffd12e;
     color: #080b09;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 700;
     line-height: 1;
     text-transform: lowercase;
     transform: rotate(-3deg);
-    box-shadow: 0 0 0 3px #080b09, 0 5px 0 2px #080b09;
+    box-shadow: 0 0 0 0.1875rem #080b09, 0 0.3125rem 0 0.125rem #080b09;
   }
 
   /* The photo wears the white ring that means "me" */
   .me {
     border-radius: 9999px;
-    box-shadow: 0 0 0 5px #fff, 0 0 0 9px var(--ring),
-      0 12px 0 4px rgba(8, 11, 9, 0.4);
+    box-shadow: 0 0 0 0.3125rem #fff, 0 0 0 0.5625rem var(--ring),
+      0 0.75rem 0 0.25rem rgba(8, 11, 9, 0.4);
     transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.2);
   }
   .me:hover {
@@ -215,37 +254,56 @@ html {
   .now {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    height: 30px;
-    padding: 0 13px 1px 11px;
+    gap: 0.5rem;
+    height: 1.875rem;
+    padding: 0 0.8125rem 0.0625rem 0.6875rem;
     border-radius: 9999px;
     background: var(--now);
     color: var(--on-now);
-    font-size: 15px;
+    font-size: 0.9375rem;
     font-weight: 700;
     line-height: 1;
     box-shadow: inset 0 0 0 1.5px var(--now-line);
   }
   .now::before {
     content: "";
-    width: 9px;
-    height: 9px;
+    width: 0.5625rem;
+    height: 0.5625rem;
     border-radius: 9999px;
     background: #00e676;
   }
+
+  @media (min-width: 768px) {
+    .big {
+      font-size: min(11vw, 9.875rem);
+    }
+    .me {
+      box-shadow: 0 0 0 0.4375rem #fff, 0 0 0 0.75rem var(--ring),
+        0 1.125rem 0 0.375rem rgba(8, 11, 9, 0.4);
+    }
+    .now {
+      font-size: 1rem; /* the smallest text on the page stays at 12px */
+    }
+  }
+
+  /* One moment on load: the word rises, then the photo is stuck on. */
+  @media (prefers-reduced-motion: no-preference) {
+    .headline-word {
+      animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    }
+    .me {
+      animation: pop 0.55s 0.2s cubic-bezier(0.2, 0.9, 0.3, 1.1) backwards;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .btn,
+    .shot,
+    .me {
+      transition: none;
+    }
+  }
 }
 
-@media (min-width: 768px) {
-  .big {
-    font-size: min(11vw, 158px);
-  }
-  .me {
-    box-shadow: 0 0 0 7px #fff, 0 0 0 12px var(--ring),
-      0 18px 0 6px rgba(8, 11, 9, 0.4);
-  }
-}
-
-/* One moment on load: the word rises, then the photo is stuck on. */
 @keyframes rise {
   from {
     transform: translateY(105%);
@@ -261,21 +319,8 @@ html {
     transform: scale(1.03) rotate(1.5deg);
   }
 }
-@media (prefers-reduced-motion: no-preference) {
-  .headline-word {
-    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-  }
-  .me {
-    animation: pop 0.55s 0.2s cubic-bezier(0.2, 0.9, 0.3, 1.1) backwards;
-  }
-}
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-  .btn,
-  .shot,
-  .me {
-    transition: none;
   }
 }

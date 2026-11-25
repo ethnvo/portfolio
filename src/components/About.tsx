@@ -4,17 +4,17 @@ const newTab = { target: "_blank", rel: "noopener noreferrer" };
 const About = () => (
   <div className="grid items-center gap-11 md:grid-cols-[minmax(0,1fr)_auto] md:gap-16">
     <div>
-      <h1 className="headline text-[31.5vw] md:text-[min(21vw,304px)]">
+      <h1 className="headline text-[31.5vw] md:text-[min(21vw,19rem)]">
         <span className="headline-word">
           <span className="headline-im">i&apos;m</span> ethan
         </span>
       </h1>
 
-      <p className="mt-[18px] text-[22px] font-bold leading-[1.15] tracking-[-0.02em] md:mt-[26px] md:text-[27px]">
+      <p className="mt-[1.125rem] text-[1.375rem] font-bold leading-[1.15] tracking-[-0.02em] md:mt-[1.625rem] md:text-[1.6875rem]">
         fullstack &amp; mobile engineer
       </p>
 
-      <div className="mt-3.5 max-w-[33em] space-y-3.5 text-[16.5px] font-medium leading-normal md:text-lg">
+      <div className="mt-3.5 max-w-[36em] space-y-3.5 text-pretty text-[1.03125rem] font-medium leading-normal md:text-lg md:leading-7">
         <p>
           Hi! I&apos;m Ethan Vo, a fourth-year Software Engineering major at UC
           Irvine.
@@ -27,7 +27,7 @@ const About = () => (
         </p>
       </div>
 
-      <div className="mt-[26px] flex flex-wrap items-center gap-x-[22px] gap-y-4 md:mt-8">
+      <div className="mt-[1.625rem] flex flex-wrap items-center gap-x-[1.375rem] gap-y-4 md:mt-8">
         <a href="/Ethan Vo Resume F.pdf" className="btn btn-solid" {...newTab}>
           explore my cv
         </a>
@@ -54,7 +54,7 @@ const About = () => (
     <img
       src="/headshot.png"
       alt="Ethan Vo"
-      className="me order-first ml-[11px] h-[150px] w-[150px] object-cover md:order-none md:mb-[22px] md:ml-0 md:mr-[22px] md:h-[min(29vw,400px)] md:w-[min(29vw,400px)]"
+      className="me order-first ml-[0.6875rem] h-[9.375rem] w-[9.375rem] object-cover md:order-none md:mb-[1.375rem] md:ml-0 md:mr-[1.375rem] md:h-[min(29vw,25rem)] md:w-[min(29vw,25rem)]"
     />
   </div>
 );

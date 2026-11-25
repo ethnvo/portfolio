@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export type Theme = "light" | "dark";
 
@@ -8,12 +8,15 @@ const DEVICE_DARK = "(prefers-color-scheme: dark)";
 // The colour behind the top of the page, for the phone's browser bar.
 const FRAME: Record<Theme, string> = { light: "#8EE0F0", dark: "#080B09" };
 
+const isTheme = (value: string | null): value is Theme =>
+  value === "light" || value === "dark";
+
 /** A saved choice wins. Otherwise follow the device. */
 export function resolveTheme(
   saved: string | null,
   deviceIsDark: boolean
 ): Theme {
-  if (saved === "light" || saved === "dark") return saved;
+  if (isTheme(saved)) return saved;
   return deviceIsDark ? "dark" : "light";
 }
 
@@ -41,6 +44,9 @@ export function useTheme(): [Theme, () => void] {
   const [theme, setTheme] = useState<Theme>(() =>
     resolveTheme(readSaved(), deviceIsDark())
   );
+  // Whether the visitor has used the switch during this visit. Kept apart
+  // from storage, so the choice still holds where storage is blocked.
+  const chosen = useRef(false);
 
   useEffect(() => {
     apply(theme);
@@ -49,9 +55,11 @@ export function useTheme(): [Theme, () => void] {
   // Until the visitor picks a side, keep following the device.
   useEffect(() => {
     const device = window.matchMedia?.(DEVICE_DARK);
-    if (!device) return;
+    // Browsers too old to report the change keep the theme they opened with.
+    if (typeof device?.addEventListener !== "function") return;
     const follow = (event: MediaQueryListEvent) => {
-      if (readSaved() === null) setTheme(event.matches ? "dark" : "light");
+      if (chosen.current || isTheme(readSaved())) return;
+      setTheme(event.matches ? "dark" : "light");
     };
     device.addEventListener("change", follow);
     return () => device.removeEventListener("change", follow);
@@ -59,6 +67,7 @@ export function useTheme(): [Theme, () => void] {
 
   const toggle = () => {
     const next: Theme = theme === "dark" ? "light" : "dark";
+    chosen.current = true;
     try {
       localStorage.setItem(STORAGE_KEY, next);
     } catch {
