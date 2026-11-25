@@ -9,11 +9,12 @@ export type timeline = {
   is_exp: string | null;
 };
 
-// Experience only — hackathons live in their own section (see projectData.ts).
-// Active (ongoing) roles come first so the "Now" cluster groups them at the top.
+// Experience only — projects live in their own section (see projectData.ts).
+// Active (ongoing) roles come first, so the "now" rows sit together at the top.
+// Titles are written the way they show: lowercase, keeping a company's own capitals.
 export const timelineData: timeline[] = [
   {
-    title: "SDE Intern @ Amazon Music",
+    title: "sde intern @ amazon music",
     active: true,
     extra: null,
     location: "Culver City, CA",
@@ -24,7 +25,7 @@ export const timelineData: timeline[] = [
     is_exp: "https://www.amazon.jobs/",
   },
   {
-    title: "Founder @ onda",
+    title: "founder @ onda",
     active: true,
     extra: null,
     location: "Irvine, CA",
@@ -35,7 +36,7 @@ export const timelineData: timeline[] = [
     is_exp: null,
   },
   {
-    title: "SWE Intern @ Equus Compute Solutions",
+    title: "swe intern @ equus compute solutions",
     active: false,
     extra: null,
     location: "Industry, CA",
@@ -46,7 +47,7 @@ export const timelineData: timeline[] = [
     is_exp: null,
   },
   {
-    title: "SWE Intern @ koderAI",
+    title: "swe intern @ koderAI",
     active: false,
     extra: null,
     location: "Irvine, CA",
@@ -57,3 +58,7 @@ export const timelineData: timeline[] = [
     is_exp: "https://koder.com/",
   },
 ];
+
+/** The label at the left of a row: "now" for a current role, else the year it started. */
+export const whenLabel = (entry: Pick<timeline, "active" | "date">): string =>
+  entry.active ? "now" : entry.date.match(/\d{4}/)?.[0] ?? "";

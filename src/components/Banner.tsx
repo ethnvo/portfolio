@@ -2,57 +2,53 @@ import { toPng } from "html-to-image";
 import download from "downloadjs";
 
 // Hidden LinkedIn banner generator. Reachable at /#banner.
-// Renders a 1584x396 (LinkedIn cover ratio) banner and exports it as a PNG.
-// Bottom-left is intentionally left clear for the profile photo overlap.
+// Draws the 1584x396 cover in the onda teaser look (flat sky frame, a small
+// "i'm" over one huge word) and exports it as a PNG at double size.
+// The bottom-left stays clear: that is where the profile photo overlaps.
 const Banner = () => {
-  const exportBanner = () => {
+  const exportBanner = async () => {
     const node = document.getElementById("banner");
     if (!node) return;
 
-    toPng(node, { quality: 0.95, pixelRatio: 2 })
-      .then((dataUrl) => {
-        download(dataUrl, "ethanvo-banner.png");
-      })
-      .catch((err) => {
-        console.error("Export failed", err);
+    try {
+      // Wait for Allo, so the export never falls back to another typeface.
+      await document.fonts?.ready;
+      const dataUrl = await toPng(node, {
+        quality: 0.95,
+        pixelRatio: 2,
+        // The page centres the banner with a margin. Left in, the picture
+        // would carry that margin and shift the artwork to the right.
+        style: { margin: "0" },
       });
+      download(dataUrl, "ethanvo-banner.png");
+    } catch (err) {
+      console.error("Export failed", err);
+    }
   };
 
   return (
-    <div className="min-h-screen w-full bg-ground flex flex-col items-center justify-center gap-8 py-16 overflow-auto">
-      <div className="w-full overflow-auto flex justify-center">
+    <div className="flex min-h-screen w-full flex-col items-center justify-center gap-8 bg-calm py-16 text-on-calm">
+      <div className="w-full overflow-x-auto">
         <div
           id="banner"
-          className="
-            relative w-[1584px] h-[396px] shrink-0
-            overflow-hidden text-white bg-ground
-          "
+          className="relative mx-auto h-[396px] w-[1584px] shrink-0 overflow-hidden whitespace-nowrap bg-sky font-bold leading-none text-ink"
         >
-          {/* Dot grid — same language as the site */}
-          <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:26px_26px] pointer-events-none" />
-
-          {/* Concentric ring outlines drifting off the right edge — calm, modern */}
-          <div className="absolute right-[-540px] top-1/2 -translate-y-1/2 h-[940px] w-[940px] rounded-full border-2 border-white/[0.07] pointer-events-none" />
-          <div className="absolute right-[-370px] top-1/2 -translate-y-1/2 h-[640px] w-[640px] rounded-full border-2 border-white/[0.12] pointer-events-none" />
-          <div className="absolute right-[-220px] top-1/2 -translate-y-1/2 h-[380px] w-[380px] rounded-full border-2 border-brand/35 pointer-events-none" />
-
-          {/* Wordmark block — right-weighted, left stays clear for the avatar */}
-          <div className="absolute right-[110px] top-1/2 -translate-y-1/2 text-right">
-            <h1 className="font-display text-[124px] leading-none font-medium tracking-tight text-ink">
-              ethanvo.dev
-            </h1>
-            <p className="mt-5 text-[26px] font-light tracking-wide text-ink-soft lowercase">
-              fullstack &amp; mobile engineer
-            </p>
-          </div>
+          <span className="absolute left-[64px] top-[50px] text-[34px] tracking-[-0.02em]">
+            ethanvo.dev
+          </span>
+          <span className="absolute left-[64px] top-[93px] text-[25px] tracking-[-0.01em] text-ink/[.66]">
+            fullstack &amp; mobile engineer
+          </span>
+          <span className="absolute left-[604px] top-[66px] text-[50px] tracking-[-0.02em]">
+            i&apos;m
+          </span>
+          <span className="absolute right-[70px] top-[-7px] text-[392px] tracking-[-0.05em]">
+            ethan
+          </span>
         </div>
       </div>
 
-      {/* Export Button */}
-      <button
-        onClick={exportBanner}
-        className="px-6 py-3 rounded-full bg-brand text-white font-semibold lowercase tracking-wide hover:bg-brand-dark transition-colors"
-      >
+      <button type="button" onClick={exportBanner} className="btn btn-solid">
         download as png
       </button>
     </div>

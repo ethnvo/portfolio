@@ -18,25 +18,53 @@ function useHash() {
   return hash;
 }
 
+// Every band of the page shares the same side gutters and content column.
+const gutter = "px-5 md:px-[6vw]";
+const column = "mx-auto max-w-[1268px]";
+
 function App() {
   const hash = useHash();
   if (hash === "#banner") return <Banner />;
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-ground text-ink">
-      {/* Subtle dot grid — matte, no glow */}
-      <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:24px_24px]" />
-      {/* Vignette for depth toward the edges */}
-      <div className="fixed inset-0 z-0 bg-[radial-gradient(ellipse_at_center,transparent_60%,rgba(0,0,0,0.5)_100%)] pointer-events-none" />
+    <div className="min-h-screen bg-calm text-on-calm">
+      {/* The frame: one flat colour behind the nav and the opening line. */}
+      <header className={`bg-frame pt-5 text-on-frame md:pt-[26px] ${gutter}`}>
+        <div className={column}>
+          <Navbar />
+        </div>
+      </header>
 
-      <Navbar />
-      <main className="relative z-10">
-        <About />
-        <Timeline />
-        <Projects />
+      <main>
+        <section
+          id="about"
+          className={`bg-frame pb-[68px] pt-11 text-on-frame md:pb-[104px] md:pt-[84px] ${gutter}`}
+        >
+          <div className={column}>
+            <About />
+          </div>
+        </section>
+
+        {/* The calm middle. */}
+        <div
+          className={`pb-[84px] pt-[76px] md:pb-[136px] md:pt-[124px] ${gutter}`}
+        >
+          <div className={`${column} space-y-[84px] md:space-y-32`}>
+            <Timeline />
+            <Projects />
+          </div>
+        </div>
       </main>
-      <footer className="relative z-10 text-center text-sm text-ink-muted py-10">
-        © 2026 Ethan Vo · built with react &amp; tailwind
+
+      <footer
+        className={`border-t border-white/10 bg-ink py-[22px] text-sm font-medium text-mute md:py-[26px] ${gutter}`}
+      >
+        <div
+          className={`${column} flex flex-wrap justify-between gap-x-4 gap-y-2`}
+        >
+          <span>© 2026 ethan vo</span>
+          <span>built with react &amp; tailwind</span>
+        </div>
       </footer>
     </div>
   );

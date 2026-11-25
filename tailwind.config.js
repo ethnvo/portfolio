@@ -1,60 +1,35 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        // onda design language
-        ground: "#080B09",
-        surface: "#10120F",
-        "surface-2": "#191B17",
-        ink: "#F9FAFB",
-        "ink-soft": "#B0B8C4",
-        "ink-muted": "#8B93A6",
-        brand: {
-          DEFAULT: "#F03E8C",
-          dark: "#C5286B",
-        },
-        live: "#00E676", // presence / active
-        wave: "#40E8FF", // cyan accent
-        gold: "#F59E0B", // amber accent
+        // onda teaser palette
+        ink: "#080B09",
+        paper: "#F9FAFB",
+        sky: "#8EE0F0",
+        ice: "#D3E3EE",
+        pink: "#F63386",
+        sun: "#FFD12E",
+        live: "#00E676",
+        mute: "#8B93A6",
+        // Roles that change with the theme. Their values live in src/index.css.
+        frame: "var(--frame)",
+        "on-frame": "var(--on-frame)",
+        calm: "var(--calm)",
+        "on-calm": "var(--on-calm)",
+        soft: "var(--soft)",
+        rule: "var(--rule)",
       },
       fontFamily: {
-        display: [
-          "Fredoka",
-          "system-ui",
-          "-apple-system",
-          "Segoe UI",
-          "Roboto",
-          "sans-serif",
-        ],
         sans: [
-          "system-ui",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "Segoe UI",
-          "Roboto",
-          "Helvetica Neue",
+          "Allo",
+          '"Allo Fallback"',
+          '"Helvetica Neue"',
+          "Helvetica",
           "Arial",
           "sans-serif",
         ],
-        zain: ["Zain", "sans-serif"],
-      },
-      animation: {
-        "gradient-x": "gradient-x 2s ease infinite",
-      },
-      keyframes: {
-        "gradient-x": {
-          "0%, 100%": {
-            "background-position": "0% 50%",
-          },
-          "50%": {
-            "background-position": "100% 50%",
-          },
-        },
-      },
-      backgroundSize: {
-        400: "400% 400%",
       },
     },
   },

@@ -1,60 +1,33 @@
-import React, { useState } from "react";
-import { BiMenu } from "react-icons/bi";
+import ThemeToggle from "./ThemeToggle";
 
-const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const links = [
+  { href: "#about", label: "about" },
+  { href: "#timeline", label: "timeline" },
+  { href: "#projects", label: "projects" },
+];
 
-  return (
-    <header className="fixed top-0 w-full bg-ground/85 backdrop-blur-sm border-b border-white/[0.08] z-50">
-      <nav className="max-w-7xl mx-auto px-5 py-4 lg:px-32 flex items-center justify-between text-ink">
-        <a
-          href="#about"
-          className="font-display text-xl md:text-2xl font-semibold tracking-tight text-ink hover:text-brand transition-colors duration-300"
-        >
-          ethanvo.dev
+// One plain row at the top of the frame. It scrolls away with the page.
+const Navbar = () => (
+  <nav
+    aria-label="sections"
+    className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 text-sm font-bold leading-none md:text-base"
+  >
+    <a
+      href="#about"
+      className="nav-link text-[17px] tracking-[-0.02em] md:text-[21px]"
+    >
+      ethanvo.dev
+    </a>
+
+    <div className="flex items-center gap-3.5 md:gap-[30px]">
+      {links.map(({ href, label }) => (
+        <a key={href} href={href} className="nav-link">
+          {label}
         </a>
-
-        <ul className="hidden md:flex gap-10">
-          <li className="opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-300">
-            <a href="#about">About</a>
-          </li>
-          <li className="opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-300">
-            <a href="#timeline">Timeline</a>
-          </li>
-          <li className="opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-300">
-            <a href="#hackathons">Hackathons</a>
-          </li>
-        </ul>
-
-        <button
-          className="md:hidden"
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-        >
-          <BiMenu className="text-3xl" />
-        </button>
-
-        {isMenuOpen && (
-          <ul className="md:hidden absolute top-16 left-0 w-full bg-ground border-b border-white/[0.08] shadow-xl shadow-black/50 py-12 text-center space-y-5 overflow-x-hidden">
-            <li className="px-10 opacity-80 hover:opacity-100 transition-opacity">
-              <a href="#about" onClick={() => setIsMenuOpen(false)}>
-                <span className="text-lg">About</span>
-              </a>
-            </li>
-            <li className="px-10 opacity-80 hover:opacity-100 transition-opacity">
-              <a href="#timeline" onClick={() => setIsMenuOpen(false)}>
-                <span className="text-lg">Timeline</span>
-              </a>
-            </li>
-            <li className="px-10 opacity-80 hover:opacity-100 transition-opacity">
-              <a href="#hackathons" onClick={() => setIsMenuOpen(false)}>
-                <span className="text-lg">Hackathons</span>
-              </a>
-            </li>
-          </ul>
-        )}
-      </nav>
-    </header>
-  );
-};
+      ))}
+      <ThemeToggle />
+    </div>
+  </nav>
+);
 
 export default Navbar;

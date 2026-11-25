@@ -2,26 +2,280 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+/* Allo, the onda teaser typeface (SIL Open Font License: public/fonts/Allo-OFL.txt).
+   Roundness is baked in; weights run 400 to 700. */
+@font-face {
+  font-family: "Allo";
+  src: url("/fonts/AlloLatin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Arial resized to Allo's proportions, so the page does not jump when Allo arrives. */
+@font-face {
+  font-family: "Allo Fallback";
+  src: local("Arial");
+  size-adjust: 107.12%;
+  ascent-override: 90.44%;
+  descent-override: 22.52%;
+  line-gap-override: 0%;
+}
+
+/* Theme roles. Light is the teaser's sky frame over a calm ice page.
+   Dark is ink all the way down. index.html sets data-theme before first paint. */
+:root {
+  color-scheme: light;
+  --frame: #8ee0f0;
+  --on-frame: #080b09;
+  --calm: #d3e3ee;
+  --on-calm: #080b09;
+  --soft: rgba(8, 11, 9, 0.62);
+  --rule: #080b09;
+  --edge: #080b09;
+  --btn-on: #ffffff;
+  --lip: #3a3f3d;
+  --ring: #080b09;
+  --now: #080b09;
+  --on-now: #ffffff;
+  --now-line: transparent;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --frame: #080b09;
+  --on-frame: #f9fafb;
+  --calm: #080b09;
+  --on-calm: #f9fafb;
+  --soft: #b0b8c4;
+  --rule: rgba(255, 255, 255, 0.16);
+  --edge: rgba(255, 255, 255, 0.2);
+  --btn-on: #080b09;
+  --lip: #8b93a6;
+  --ring: #2b302d;
+  --now: transparent;
+  --on-now: #00e676;
+  --now-line: rgba(0, 230, 118, 0.5);
+}
+
+html {
+  background: var(--frame);
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
 }
 
-body {
-  background-color: #080b09;
+::selection {
+  background: #f63386;
+  color: #fff;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #252528;
-  border-radius: 9999px;
+:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
 }
-::-webkit-scrollbar-track {
-  background-color: #080b09;
+
+@layer components {
+  /* The teaser's line: a small "i'm" tucked over one huge word.
+     Everything is in em, so the pair scales as one. Set the size with font-size. */
+  .headline {
+    height: 0.9em;
+    margin-top: -0.113em; /* trims the empty space above the tall letters */
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    white-space: nowrap;
+    clip-path: inset(-1em -1em 0 -1em); /* the word rises from behind its own baseline */
+  }
+  .headline-word {
+    position: relative;
+    display: block;
+    height: 100%;
+  }
+  .headline-im {
+    position: absolute;
+    left: 0.24em;
+    top: 1.48em;
+    font-size: 0.125em;
+    letter-spacing: -0.02em;
+  }
+
+  /* Section titles */
+  .big {
+    margin-top: -0.113em;
+    font-size: 17vw;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+
+  /* Pill buttons that sit on a hard lip and press down */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 54px;
+    padding: 0 26px 1px;
+    border-radius: 9999px;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  .btn:active {
+    transform: translateY(4px);
+  }
+  .btn-solid {
+    background: var(--on-frame);
+    color: var(--btn-on);
+    box-shadow: 0 6px 0 var(--lip);
+  }
+  .btn-solid:hover {
+    box-shadow: 0 8px 0 var(--lip);
+  }
+  .btn-solid:active {
+    box-shadow: 0 2px 0 var(--lip);
+  }
+  .btn-line {
+    box-shadow: inset 0 0 0 3px var(--on-frame), 0 6px 0 var(--on-frame);
+  }
+  .btn-line:hover {
+    box-shadow: inset 0 0 0 3px var(--on-frame), 0 8px 0 var(--on-frame);
+  }
+  .btn-line:active {
+    box-shadow: inset 0 0 0 3px var(--on-frame), 0 2px 0 var(--on-frame);
+  }
+
+  /* Text links: a thick underline that turns pink under the pointer */
+  .link {
+    padding-bottom: 3px;
+    border-bottom: 2.5px solid currentColor;
+    font-weight: 700;
+    transition: border-color 0.12s ease;
+  }
+  .nav-link {
+    padding-bottom: 3px;
+    border-bottom: 2.5px solid transparent;
+    transition: border-color 0.12s ease;
+  }
+  .link:hover,
+  .nav-link:hover {
+    border-bottom-color: #f63386;
+  }
+
+  /* Stickers: an outline and a hard shadow underneath, no blur */
+  .sticker {
+    background: #fff;
+    box-shadow: 0 0 0 3px var(--edge), 0 6px 0 2px var(--edge);
+  }
+  .shot {
+    background: #fff;
+    box-shadow: 0 0 0 3px var(--edge), 0 8px 0 2px var(--edge);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .tile:hover .shot {
+    transform: translateY(-3px);
+    box-shadow: 0 0 0 3px var(--edge), 0 11px 0 2px var(--edge);
+  }
+  .tile:active .shot {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 3px var(--edge), 0 4px 0 2px var(--edge);
+  }
+  .award {
+    position: absolute;
+    left: -12px;
+    top: -18px;
+    padding: 8px 15px 9px;
+    border-radius: 9999px;
+    background: #ffd12e;
+    color: #080b09;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: lowercase;
+    transform: rotate(-3deg);
+    box-shadow: 0 0 0 3px #080b09, 0 5px 0 2px #080b09;
+  }
+
+  /* The photo wears the white ring that means "me" */
+  .me {
+    border-radius: 9999px;
+    box-shadow: 0 0 0 5px #fff, 0 0 0 9px var(--ring),
+      0 12px 0 4px rgba(8, 11, 9, 0.4);
+    transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+  }
+  .me:hover {
+    transform: rotate(3deg) scale(1.03);
+  }
+
+  /* The "now" marker on current roles */
+  .now {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 30px;
+    padding: 0 13px 1px 11px;
+    border-radius: 9999px;
+    background: var(--now);
+    color: var(--on-now);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+    box-shadow: inset 0 0 0 1.5px var(--now-line);
+  }
+  .now::before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    border-radius: 9999px;
+    background: #00e676;
+  }
 }
-::-webkit-scrollbar {
-  width: 12px;
+
+@media (min-width: 768px) {
+  .big {
+    font-size: min(11vw, 158px);
+  }
+  .me {
+    box-shadow: 0 0 0 7px #fff, 0 0 0 12px var(--ring),
+      0 18px 0 6px rgba(8, 11, 9, 0.4);
+  }
 }
-.gap-transition {
-  transition: gap 0.4s ease;
+
+/* One moment on load: the word rises, then the photo is stuck on. */
+@keyframes rise {
+  from {
+    transform: translateY(105%);
+  }
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.84) rotate(-8deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.03) rotate(1.5deg);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .headline-word {
+    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+  .me {
+    animation: pop 0.55s 0.2s cubic-bezier(0.2, 0.9, 0.3, 1.1) backwards;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .btn,
+  .shot,
+  .me {
+    transition: none;
+  }
 }
